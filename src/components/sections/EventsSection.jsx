@@ -128,23 +128,7 @@ export default function EventsSection() {
 
       <div className="celebration-section__container">
         <header className="celebration-section__header">
-
           <h2>A Celebration Across Three Beautiful Days</h2>
-
-          <p className="celebration-section__introduction">
-            From two different corners of the world, two families waited for
-            this moment. Now it is finally here, and we would love for you to
-            share it with us.
-          </p>
-
-          <OrnamentalDivider />
-
-          <p className="celebration-section__story">
-            Their story was written through late-night calls, airport reunions,
-            and a love that needed no time zone. Now, Ankita and Siddharth come
-            home to Mumbai, where their families grew roots and where two
-            worlds will beautifully become one.
-          </p>
         </header>
 
         <div className="celebration-cards">
