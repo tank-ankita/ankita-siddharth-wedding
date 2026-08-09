@@ -1,0 +1,423 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Great+Vibes&display=swap");
+
+:root {
+  --activities-paper: #ead0a7;
+  --activities-paper-light: #f7e8ce;
+  --activities-paper-card: rgba(250, 235, 211, 0.82);
+  --activities-maroon: #7f171b;
+  --activities-brown: #4f2a18;
+  --activities-gold: #c68b2f;
+  --activities-line: rgba(166, 107, 33, 0.56);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.mumbai-activities {
+  position: relative;
+  isolation: isolate;
+  min-height: 100vh;
+  overflow: hidden;
+  padding: clamp(70px, 8vw, 120px) clamp(18px, 5vw, 80px);
+  color: var(--activities-brown);
+  background:
+    radial-gradient(circle at 50% 28%, rgba(255, 248, 229, 0.52), transparent 45%),
+    linear-gradient(rgba(112, 58, 21, 0.05), rgba(112, 58, 21, 0.05));
+  font-family: "Cormorant Garamond", Georgia, serif;
+}
+
+.mumbai-activities::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+  opacity: 0.18;
+  pointer-events: none;
+  background-image:
+    repeating-radial-gradient(
+      circle at 25% 25%,
+      rgba(99, 58, 25, 0.2) 0 1px,
+      transparent 1px 6px
+    );
+  background-size: 34px 34px;
+  mix-blend-mode: multiply;
+}
+
+.activities-panel {
+  position: relative;
+  z-index: 2;
+  width: min(1180px, 100%);
+  margin-inline: auto;
+  padding: clamp(42px, 6vw, 82px) clamp(20px, 4vw, 58px) 34px;
+  border: 2px solid var(--activities-gold);
+  border-radius: 90px 90px 8px 8px;
+  background: linear-gradient(rgba(247, 232, 206, 0.94), rgba(242, 220, 184, 0.94));
+  box-shadow:
+    0 22px 70px rgba(75, 35, 12, 0.16),
+    inset 0 0 0 6px rgba(255, 245, 221, 0.38);
+}
+
+.activities-panel::before {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border: 1px solid rgba(198, 139, 47, 0.66);
+  border-radius: 78px 78px 4px 4px;
+  pointer-events: none;
+}
+
+.activities-heading {
+  position: relative;
+  z-index: 1;
+  max-width: 760px;
+  margin: 0 auto clamp(30px, 4vw, 50px);
+  text-align: center;
+}
+
+.activities-eyebrow {
+  margin: 0 0 5px;
+  color: var(--activities-maroon);
+  font-size: clamp(0.9rem, 1.4vw, 1.12rem);
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.activities-heading h2 {
+  margin: 0;
+  color: var(--activities-maroon);
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(4rem, 8vw, 7.4rem);
+  font-weight: 400;
+  line-height: 0.98;
+}
+
+.heading-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 14px auto 17px;
+  color: var(--activities-gold);
+}
+
+.heading-divider span {
+  width: 88px;
+  height: 1px;
+  background: var(--activities-gold);
+}
+
+.heading-divider b {
+  font-size: 1rem;
+}
+
+.activities-intro {
+  margin: 0;
+  font-size: clamp(1rem, 1.65vw, 1.26rem);
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.activities-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(16px, 2vw, 24px);
+}
+
+.activity-card {
+  position: relative;
+  min-height: 310px;
+  overflow: hidden;
+  border: 1.5px solid var(--activities-gold);
+  border-radius: 62px 62px 5px 5px;
+  background: var(--activities-paper-card);
+  box-shadow: 0 8px 24px rgba(88, 44, 16, 0.08);
+  transition:
+    transform 260ms ease,
+    box-shadow 260ms ease,
+    background-color 260ms ease;
+}
+
+.activity-card:hover {
+  transform: translateY(-7px);
+  background: rgba(255, 243, 222, 0.95);
+  box-shadow: 0 16px 32px rgba(88, 44, 16, 0.16);
+}
+
+.activity-card-top {
+  padding: 12px 12px 0;
+  text-align: center;
+}
+
+.activity-motif {
+  display: block;
+  height: 23px;
+  margin-bottom: 2px;
+  color: var(--activities-gold);
+  font-size: 1.2rem;
+  transform: rotate(180deg);
+}
+
+.activity-image-wrap {
+  height: 148px;
+  overflow: hidden;
+  border-radius: 42px 42px 10px 10px;
+  background: rgba(218, 189, 142, 0.28);
+}
+
+.activity-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: sepia(0.16) saturate(0.94) contrast(0.98);
+  transition: transform 400ms ease;
+}
+
+.activity-card:hover .activity-image {
+  transform: scale(1.045);
+}
+
+.activity-copy {
+  padding: 13px 17px 20px;
+  text-align: center;
+}
+
+.activity-copy h3 {
+  margin: 0 0 8px;
+  color: var(--activities-maroon);
+  font-size: clamp(1rem, 1.35vw, 1.18rem);
+  font-weight: 600;
+  letter-spacing: 0.075em;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.activity-copy p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.35;
+}
+
+.activities-help {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 18px;
+  width: min(610px, 100%);
+  margin: 25px auto 0;
+  padding: 12px 20px;
+  border: 1px solid var(--activities-gold);
+  background: rgba(247, 229, 198, 0.72);
+}
+
+.activities-help p {
+  margin: 0;
+  font-size: 0.98rem;
+  line-height: 1.25;
+}
+
+.activities-help strong {
+  color: var(--activities-maroon);
+  font-weight: 600;
+}
+
+.help-heart {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border: 1px solid var(--activities-gold);
+  border-radius: 50%;
+  color: var(--activities-maroon);
+}
+
+.help-ornament {
+  color: var(--activities-gold);
+  font-size: 1.45rem;
+}
+
+.activities-lanterns {
+  position: absolute;
+  top: 0;
+  right: clamp(15px, 4vw, 70px);
+  z-index: 4;
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(8px, 1.8vw, 26px);
+  pointer-events: none;
+}
+
+.lantern {
+  width: clamp(52px, 7vw, 92px);
+  height: auto;
+  object-fit: contain;
+  transform-origin: top center;
+  filter: drop-shadow(0 9px 8px rgba(69, 29, 10, 0.25));
+  animation: lantern-sway 5s ease-in-out infinite;
+}
+
+.lantern-two {
+  width: clamp(64px, 8vw, 110px);
+  animation-delay: -1.3s;
+}
+
+.lantern-three {
+  margin-top: 28px;
+  animation-delay: -2.6s;
+}
+
+.activities-floral {
+  position: absolute;
+  z-index: 3;
+  width: clamp(250px, 28vw, 470px);
+  aspect-ratio: 1.15;
+  pointer-events: none;
+  background: center / contain no-repeat;
+  filter: drop-shadow(0 14px 18px rgba(73, 32, 12, 0.14));
+}
+
+.activities-landmark {
+  position: absolute;
+  z-index: 0;
+  bottom: 40px;
+  width: clamp(180px, 22vw, 360px);
+  opacity: 0.24;
+  pointer-events: none;
+  filter: sepia(0.5);
+}
+
+.activities-landmark img {
+  display: block;
+  width: 100%;
+}
+
+.landmark-left {
+  left: -45px;
+}
+
+.landmark-right {
+  right: -50px;
+}
+
+@keyframes lantern-sway {
+  0%,
+  100% {
+    transform: rotate(-1.6deg);
+  }
+
+  50% {
+    transform: rotate(1.6deg);
+  }
+}
+
+@media (max-width: 1050px) {
+  .activities-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .activities-panel {
+    border-radius: 70px 70px 8px 8px;
+  }
+
+  .activities-panel::before {
+    border-radius: 60px 60px 4px 4px;
+  }
+}
+
+@media (max-width: 640px) {
+  .mumbai-activities {
+    padding: 80px 12px 48px;
+    background-attachment: scroll;
+  }
+
+  .activities-panel {
+    padding: 50px 14px 24px;
+    border-radius: 44px 44px 8px 8px;
+  }
+
+  .activities-panel::before {
+    inset: 8px;
+    border-radius: 36px 36px 4px 4px;
+  }
+
+  .activities-heading h2 {
+    font-size: clamp(3.7rem, 18vw, 5rem);
+  }
+
+  .activities-intro br {
+    display: none;
+  }
+
+  .activities-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .activity-card {
+    min-height: 0;
+  }
+
+  .activity-image-wrap {
+    height: 180px;
+  }
+
+  .activities-help {
+    grid-template-columns: auto 1fr;
+    gap: 12px;
+    padding: 12px 14px;
+  }
+
+  .help-ornament {
+    display: none;
+  }
+
+  .activities-lanterns {
+    right: 4px;
+  }
+
+  .lantern {
+    width: 48px;
+  }
+
+  .lantern-two {
+    width: 58px;
+  }
+
+  .lantern-three {
+    display: none;
+  }
+
+  .activities-floral {
+    width: 230px;
+    opacity: 0.85;
+  }
+
+  .floral-top-left {
+    top: -35px;
+    left: -90px;
+  }
+
+  .floral-bottom-right {
+    right: -100px;
+    bottom: -55px;
+  }
+
+  .activities-landmark {
+    opacity: 0.13;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lantern,
+  .activity-card,
+  .activity-image {
+    animation: none;
+    transition: none;
+  }
+}
