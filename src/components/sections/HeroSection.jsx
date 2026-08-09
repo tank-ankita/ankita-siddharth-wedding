@@ -1,4 +1,4 @@
-import coupleIllustration from '../../../assets/clipart_couple.png';
+import coupleIllustration from '../../../assets/final_clip_art_2.png';
 import heroBackground from '../../../assets/background/background form gpt.png';
 
 function HeroSection() {

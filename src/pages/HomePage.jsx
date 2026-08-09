@@ -15,6 +15,20 @@ function HomePage() {
   return (
     <div className="site-shell">
       <div className="paper-texture" aria-hidden="true" />
+      <div className="sparkle-group" aria-hidden="true">
+        <div className="sparkler sparkler--left">
+          <span className="sparkler__stick" />
+          <span className="sparkler__tip" />
+        </div>
+        <div className="sparkler sparkler--center">
+          <span className="sparkler__stick" />
+          <span className="sparkler__tip" />
+        </div>
+        <div className="sparkler sparkler--right">
+          <span className="sparkler__stick" />
+          <span className="sparkler__tip" />
+        </div>
+      </div>
       <NavBar mobileMenuOpen={mobileMenuOpen} setMobileMenuOpen={setMobileMenuOpen} />
       <main>
         <HeroSection />

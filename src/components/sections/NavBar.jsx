@@ -1,11 +1,19 @@
-import { useState } from 'react';
 import { navigation } from '../../content/siteContent';
 
 function NavBar({ mobileMenuOpen, setMobileMenuOpen }) {
   return (
     <nav className="navbar">
       <div className="navbar__inner">
-        <a href="#top" className="navbar__brand">A & S</a>
+        <a href="#top" className="navbar__brand">
+          <span className="navbar__brand-visual" aria-hidden="true">
+            <span className="navbar__brand-visual-ring" />
+            <span className="navbar__brand-visual-core" />
+          </span>
+          <span className="navbar__brand-text">
+            <span className="navbar__brand-name">Ankita &amp; Siddharth</span>
+            <span className="navbar__brand-subtitle">Wedding</span>
+          </span>
+        </a>
         <button className="navbar__toggle" onClick={() => setMobileMenuOpen((open) => !open)} aria-label="Toggle menu">
           ☰
         </button>
