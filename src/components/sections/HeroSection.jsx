@@ -1,5 +1,47 @@
+import { useEffect, useState } from 'react';
 import coupleIllustration from '../../../assets/celebrations/sid_and_me.png';
-import heroBackground from '../../../assets/background/background_rect_3.png';
+import heroBackground from '../../../assets/background/background_mumbai.png';
+
+const WEDDING_DATE = new Date(2027, 0, 28, 0, 0, 0);
+
+function getTimeLeft(target) {
+  const diff = Math.max(0, target.getTime() - Date.now());
+  return {
+    days: Math.floor(diff / 86400000),
+    hours: Math.floor((diff / 3600000) % 24),
+    minutes: Math.floor((diff / 60000) % 60),
+    seconds: Math.floor((diff / 1000) % 60),
+  };
+}
+
+function Countdown({ target }) {
+  const [timeLeft, setTimeLeft] = useState(() => getTimeLeft(target));
+
+  useEffect(() => {
+    const id = setInterval(() => setTimeLeft(getTimeLeft(target)), 1000);
+    return () => clearInterval(id);
+  }, [target]);
+
+  const units = [
+    { label: "Days", value: timeLeft.days },
+    { label: "Hours", value: timeLeft.hours },
+    { label: "Minutes", value: timeLeft.minutes },
+    { label: "Seconds", value: timeLeft.seconds },
+  ];
+
+  return (
+    <div className="hero__countdown" role="timer" aria-label="Countdown to the wedding">
+      {units.map((unit) => (
+        <div className="hero__countdown-unit" key={unit.label}>
+          <span className="hero__countdown-value">
+            {String(unit.value).padStart(2, "0")}
+          </span>
+          <span className="hero__countdown-label">{unit.label}</span>
+        </div>
+      ))}
+    </div>
+  );
+}
 
 function TypedText({ text, startDelay, charStep, wordClassName }) {
   const chunks = text.trim().split(/(\s+)/);
@@ -72,6 +114,7 @@ function HeroSection() {
           <div className="hero__meta">
             <strong>28 — 30 January 2027</strong>
             <span>Mumbai, India</span>
+            <Countdown target={WEDDING_DATE} />
           </div>
         </div>
         <div className="hero__image panel">
