@@ -3,7 +3,6 @@ import NavBar from '../components/sections/NavBar';
 import HeroSection from '../components/sections/HeroSection';
 import StorySection from '../components/sections/StorySection';
 import EventsSection from '../components/sections/EventsSection';
-import JourneySection from '../components/sections/JourneySection';
 import TravelSection from '../components/sections/TravelSection';
 import ActivitiesSection from '../components/sections/ActivitiesSection';
 import RsvpSection from '../components/sections/RsvpSection';
@@ -37,7 +36,6 @@ function HomePage() {
         <RsvpSection />
         <TravelSection />
         <ActivitiesSection />
-        <JourneySection />
         <FAQSection />
       </main>
       <FooterSection />

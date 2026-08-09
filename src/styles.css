@@ -957,7 +957,9 @@ button, input, textarea, select { font: inherit; }
   border: 1px solid var(--gold);
   border-radius: 2px;
   color: #000;
-  background: transparent;
+  background: rgba(255, 250, 240, 0.35);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
   font-family: 'Cinzel', serif;
   font-size: 0.7rem;
   letter-spacing: 0.14em;

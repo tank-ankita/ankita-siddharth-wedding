@@ -6,7 +6,9 @@
       "Bash(gh auth *)",
       "Bash(brew list *)",
       "Bash(brew install *)",
-      "Bash(grep -n \"^h3\\\\|h3 {\\\\|h3,\\\\|, h3\\\\| h3 \" /Users/tank/Documents/marriage/invite/wedding-site/src/styles.css)"
+      "Bash(grep -n \"^h3\\\\|h3 {\\\\|h3,\\\\|, h3\\\\| h3 \" /Users/tank/Documents/marriage/invite/wedding-site/src/styles.css)",
+      "Bash(ls -la \"/private/tmp/claude-501/-Users-tank-Documents-marriage-invite-wedding-site/9505c827-0d04-4ab2-94fb-138b10fa07e2/scratchpad\" 2>/dev/null; echo \"---find recent images anywhere in project newer than 30 min---\"; find /Users/tank/Documents/marriage -type f -mmin -60 -not -path \"*/node_modules/*\" -not -path \"*/.git/*\" 2>/dev/null)",
+      "Read(//Users/tank/Documents/marriage/**)"
     ]
   }
 }
