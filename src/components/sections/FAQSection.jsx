@@ -4,30 +4,25 @@ import "../../../css/FAQSection.css";
 
 export const faqItems = [
   {
-    question: "What should I wear?",
+    question: "What to wear at an Indian Wedding?",
     answer:
-      "Indian formal or festive attire is warmly encouraged for all three events. Think rich colours and comfortable footwear for dancing at the Sangeet. Black is best avoided for the wedding ceremony.",
+      "Indian formal or festive attire is warmly encouraged for all three events — think rich colours, flowing silhouettes and comfortable footwear for dancing at the Sangeet. Ethnic wear is always welcome, though a smart Indo-western outfit works beautifully too. Black is best avoided for the wedding ceremony.",
   },
   {
-    question: "Are children welcome?",
+    question: "Where can I shop?",
     answer:
-      "We love your little ones, but to help us plan an evening for the adults, we have kept our celebrations for guests aged 16 and above, except for immediate family.",
+      "Mumbai is a wonderful place to shop for the occasion — Colaba Causeway and Linking Road are great for quick finds, while Bandra's boutiques offer more curated pieces. If you'd like personal recommendations or tailoring suggestions, just reach out and we're happy to point you in the right direction.",
   },
   {
-    question: "Is there a wedding hashtag?",
+    question: "Who can I contact for assistance?",
     answer:
-      "Yes — tag your photos with #AnkitaMeetsSiddharth so we can find and enjoy them all after the weekend.",
-  },
-  {
-    question: "Do you have a gift registry?",
-    answer:
-      "Your presence is truly the only present we need. For those who insist, additional details will be shared closer to the wedding.",
-  },
-  {
-    question: "Who do I contact with questions?",
-    answer:
-      "Reach out any time at ankita.siddharth.wedding@example.com. We are happy to help with travel, accommodation, or anything in between.",
+      "Reach out any time at ankita.siddharth.wedding@example.com. We are happy to help with travel, accommodation, outfits or anything in between.",
     email: "ankita.siddharth.wedding@example.com",
+  },
+  {
+    question: "Where is the accommodation?",
+    answer:
+      "We're curating a list of recommended hotels close to our venues, Eskay Resorts and Sahara Star, at a range of price points. Booking details will be shared with all guests closer to the date — let us know if you'd like early recommendations.",
   },
 ];
 

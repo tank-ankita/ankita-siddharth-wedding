@@ -392,6 +392,53 @@ button, input, textarea, select { font: inherit; }
   border-bottom: 1px solid rgba(78,57,31,0.16);
 }
 
+.hero__lanterns {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero__lantern-cluster {
+  position: absolute;
+  top: 0;
+  display: flex;
+  align-items: flex-start;
+}
+
+.hero__lantern-cluster--left {
+  left: -14px;
+}
+
+.hero__lantern-cluster--right {
+  right: -14px;
+}
+
+.hero__lantern-cluster .hero__lantern:not(:first-child) {
+  margin-left: -28px;
+}
+
+.hero__lantern {
+  display: block;
+  width: auto;
+  transform-origin: top center;
+  filter: drop-shadow(0 18px 22px rgba(20, 10, 4, 0.35));
+  animation-name: hero-lantern-swing;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+@keyframes hero-lantern-swing {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__lantern {
+    animation: none;
+  }
+}
+
 .hero__content {
   position: relative;
   z-index: 1;
@@ -666,6 +713,10 @@ button, input, textarea, select { font: inherit; }
 
   .hero {
     padding: 3rem 0 2.5rem;
+  }
+
+  .hero__lantern {
+    height: 90px !important;
   }
 
   .hero__title {
