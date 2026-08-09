@@ -1,6 +1,6 @@
 // CelebrationTimeline.jsx
 
-import eventsBackgroundImage from '../../../assets/celebrations/bg_2.png';
+import eventsBackgroundImage from '../../../assets/celebrations/bg_4.png';
 import sangeetImage from '../../../assets/celebrations/dancing_doll.png';
 import weddingImage from '../../../assets/celebrations/chairs.png';
 import receptionImage from '../../../assets/celebrations/glassses.png';

@@ -40,11 +40,33 @@
       transparent 82%,
       rgba(28, 83, 143, 0.06)
     ),
-    var(--celebration-bg-image) center / cover no-repeat,
     var(--wedding-paper);
 
   padding: 110px 24px 130px;
   isolation: isolate;
+}
+
+.celebration-section::after {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  content: "";
+  pointer-events: none;
+  background: var(--celebration-bg-image) center / cover no-repeat;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0,
+    #000 160px,
+    #000 calc(100% - 160px),
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0,
+    #000 160px,
+    #000 calc(100% - 160px),
+    transparent 100%
+  );
 }
 
 .celebration-section::before {
@@ -152,7 +174,7 @@
   max-height: 1000px;
   overflow: hidden;
   border-radius: 220px 220px 24px 24px;
-  background: #b7673229;
+  background: #0000002b;
   box-shadow: 0 28px 60px #4b494666;
   backdrop-filter: blur(3px);
   transition:
@@ -324,6 +346,23 @@
 @media (max-width: 600px) {
   .celebration-section {
     padding-inline: 13px;
+  }
+
+  .celebration-section::after {
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      transparent 0,
+      #000 90px,
+      #000 calc(100% - 90px),
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to bottom,
+      transparent 0,
+      #000 90px,
+      #000 calc(100% - 90px),
+      transparent 100%
+    );
   }
 
   .celebration-section__header h2 {

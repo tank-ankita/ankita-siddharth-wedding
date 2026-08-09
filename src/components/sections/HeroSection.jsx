@@ -48,7 +48,7 @@ function HeroSection() {
       className="hero section-shell"
       id="top"
       style={{
-        backgroundImage: `url(${heroBackground})`
+        '--hero-bg-image': `url(${heroBackground})`
       }}
     >
       <div className="container hero__content">

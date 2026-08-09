@@ -168,8 +168,14 @@ button, input, textarea, select { font: inherit; }
 }
 
 .hero.section-shell::before {
+  z-index: 0;
   animation: none;
-  background: none;
+  background-image: var(--hero-bg-image);
+  background-position: center;
+  background-size: 100% 120%;
+  background-repeat: no-repeat;
+  -webkit-mask-image: linear-gradient(to bottom, #000 0, #000 calc(100% - 160px), transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0, #000 calc(100% - 160px), transparent 100%);
 }
 
 @keyframes shimmer {
@@ -383,9 +389,6 @@ button, input, textarea, select { font: inherit; }
   position: relative;
   isolation: isolate;
   background-color: #b88a55;
-  background-position: center;
-  background-size: 100% 120%;
-  background-repeat: no-repeat;
   border-bottom: 1px solid rgba(78,57,31,0.16);
 }
 
@@ -561,6 +564,28 @@ button, input, textarea, select { font: inherit; }
   .hero {
     min-height: auto;
     padding: 4rem 0 3rem;
+  }
+
+  .hero.section-shell::before {
+    -webkit-mask-image: linear-gradient(to bottom, #000 0, #000 calc(100% - 90px), transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 0, #000 calc(100% - 90px), transparent 100%);
+  }
+
+  .travel-section::after {
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      transparent 0,
+      #000 90px,
+      #000 calc(100% - 90px),
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to bottom,
+      transparent 0,
+      #000 90px,
+      #000 calc(100% - 90px),
+      transparent 100%
+    );
   }
 
   .hero__content {
@@ -836,9 +861,32 @@ button, input, textarea, select { font: inherit; }
 .journey__frame img { border-radius: 1rem; }
 
 .travel-section {
-  background:
-    linear-gradient(rgb(244 228 194 / 51%), rgb(79 70 52 / 85%)),
-    var(--travel-bg-image) center / cover no-repeat;
+  position: relative;
+  isolation: isolate;
+  background: linear-gradient(rgb(244 228 194 / 51%), rgb(79 70 52 / 85%));
+}
+
+.travel-section::after {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  content: "";
+  pointer-events: none;
+  background: var(--travel-bg-image) center / cover no-repeat;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0,
+    #000 160px,
+    #000 calc(100% - 160px),
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0,
+    #000 160px,
+    #000 calc(100% - 160px),
+    transparent 100%
+  );
 }
 
 .travel-header {
