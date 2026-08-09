@@ -3,7 +3,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Great+Vibes&family=Montserrat:wght@400;500;600&display=swap");
 
 :root {
-  --wedding-paper: #f5ead8;
   --wedding-paper-light: #fff9ed;
   --wedding-ink: #3f2a21;
   --wedding-muted: #725e50;
@@ -20,76 +19,8 @@
 
 .celebration-section {
   position: relative;
-  overflow: hidden;
   color: var(--wedding-ink);
-  background:
-    radial-gradient(
-      circle at 8% 15%,
-      rgba(199, 81, 58, 0.15),
-      transparent 27%
-    ),
-    radial-gradient(
-      circle at 94% 35%,
-      rgba(46, 104, 163, 0.12),
-      transparent 30%
-    ),
-    linear-gradient(
-      90deg,
-      rgba(139, 52, 37, 0.06),
-      transparent 18%,
-      transparent 82%,
-      rgba(28, 83, 143, 0.06)
-    ),
-    var(--wedding-paper);
-
   padding: 110px 24px 130px;
-  isolation: isolate;
-}
-
-.celebration-section::after {
-  position: absolute;
-  inset: 0;
-  z-index: -2;
-  content: "";
-  pointer-events: none;
-  background: var(--celebration-bg-image) center / cover no-repeat;
-  -webkit-mask-image: linear-gradient(
-    to bottom,
-    transparent 0,
-    #000 160px,
-    #000 calc(100% - 160px),
-    transparent 100%
-  );
-  mask-image: linear-gradient(
-    to bottom,
-    transparent 0,
-    #000 160px,
-    #000 calc(100% - 160px),
-    transparent 100%
-  );
-}
-
-.celebration-section::before {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  content: "";
-  opacity: 0.22;
-  pointer-events: none;
-
-  background-image:
-    repeating-linear-gradient(
-      0deg,
-      transparent 0,
-      transparent 3px,
-      rgba(88, 52, 31, 0.025) 4px
-    ),
-    repeating-linear-gradient(
-      90deg,
-      transparent 0,
-      transparent 5px,
-      rgba(88, 52, 31, 0.02) 6px
-    );
 }
 
 .celebration-section__container {
@@ -346,23 +277,6 @@
 @media (max-width: 600px) {
   .celebration-section {
     padding-inline: 13px;
-  }
-
-  .celebration-section::after {
-    -webkit-mask-image: linear-gradient(
-      to bottom,
-      transparent 0,
-      #000 90px,
-      #000 calc(100% - 90px),
-      transparent 100%
-    );
-    mask-image: linear-gradient(
-      to bottom,
-      transparent 0,
-      #000 90px,
-      #000 calc(100% - 90px),
-      transparent 100%
-    );
   }
 
   .celebration-section__header h2 {

@@ -1,5 +1,4 @@
 import { useState } from "react";
-import faqBackgroundImage from "../../../assets/faq/background_1.png";
 import "../../../css/FAQSection.css";
 
 export const faqItems = [
@@ -82,11 +81,11 @@ export default function FAQSection() {
   };
 
   return (
-    <section
-      className="faq-section"
-      id="faq"
-      style={{ "--faq-bg-image": `url(${faqBackgroundImage})` }}
-    >
+    <section className="faq-section section-ambient-bg" id="faq">
+      <div className="section-ambient-wash section-ambient-wash--left" aria-hidden="true" />
+      <div className="section-ambient-wash section-ambient-wash--right" aria-hidden="true" />
+      <div className="section-ambient-mandala" aria-hidden="true" />
+
       <div className="faq-section__inner">
         <header className="faq-section__intro">
           <p className="faq-section__eyebrow">Before the Celebrations</p>

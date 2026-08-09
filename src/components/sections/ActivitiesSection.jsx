@@ -2,7 +2,11 @@ import { activityCards } from '../../content/siteContent';
 
 function ActivitiesSection() {
   return (
-    <section className="section-shell" id="activities">
+    <section className="section-shell section-ambient-bg" id="activities">
+      <div className="section-ambient-wash section-ambient-wash--left" aria-hidden="true" />
+      <div className="section-ambient-wash section-ambient-wash--right" aria-hidden="true" />
+      <div className="section-ambient-mandala" aria-hidden="true" />
+
       <div className="container">
         <p className="section-eyebrow">While you're in town</p>
         <h2 className="section-title">Activities &amp; Things to Do</h2>

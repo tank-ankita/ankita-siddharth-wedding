@@ -12,61 +12,8 @@
 
 .faq-section {
   position: relative;
-  isolation: isolate;
-  overflow: hidden;
   padding: clamp(80px, 9vw, 135px) 24px;
   color: var(--faq-ink);
-
-  background:
-    linear-gradient(
-      rgba(203, 161, 116, 0.07),
-      rgba(203, 161, 116, 0.07)
-    );
-}
-
-.faq-section::before {
-  position: absolute;
-  inset: 0;
-  z-index: -2;
-  content: "";
-  pointer-events: none;
-  background: var(--faq-bg-image) center / cover no-repeat;
-  -webkit-mask-image: linear-gradient(
-    to bottom,
-    transparent 0,
-    #000 160px,
-    #000 calc(100% - 160px),
-    transparent 100%
-  );
-  mask-image: linear-gradient(
-    to bottom,
-    transparent 0,
-    #000 160px,
-    #000 calc(100% - 160px),
-    transparent 100%
-  );
-}
-
-.faq-section::after {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  content: "";
-  pointer-events: none;
-
-  background:
-    linear-gradient(
-      90deg,
-      rgba(63, 31, 17, 0.08),
-      transparent 22%,
-      transparent 78%,
-      rgba(63, 31, 17, 0.08)
-    ),
-    radial-gradient(
-      circle at 48% 35%,
-      rgba(255, 246, 225, 0.15),
-      transparent 42%
-    );
 }
 
 .faq-section__inner {
@@ -323,12 +270,6 @@
 @media (max-width: 560px) {
   .faq-section {
     padding: 72px 14px;
-    background-position: 57% center;
-  }
-
-  .faq-section::before {
-    -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 90px, #000 calc(100% - 90px), transparent 100%);
-    mask-image: linear-gradient(to bottom, transparent 0, #000 90px, #000 calc(100% - 90px), transparent 100%);
   }
 
   .faq-section__intro h2 {

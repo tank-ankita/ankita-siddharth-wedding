@@ -2,7 +2,6 @@ import { travelCards } from '../../content/siteContent';
 import planeIcon from '../../../assets/travel/to-mumbai.png';
 import taxiIcon from '../../../assets/travel/taxi.png';
 import trainIcon from '../../../assets/travel/train.png';
-import travelBackgroundImage from '../../../assets/travel/background_travel_2.png';
 
 const icons = {
   plane: planeIcon,
@@ -21,10 +20,13 @@ function withLineBreaks(text) {
 function TravelSection() {
   return (
     <section
-      className="section-shell travel-section"
+      className="section-shell travel-section section-ambient-bg"
       id="travel"
-      style={{ '--travel-bg-image': `url(${travelBackgroundImage})` }}
     >
+      <div className="section-ambient-wash section-ambient-wash--left" aria-hidden="true" />
+      <div className="section-ambient-wash section-ambient-wash--right" aria-hidden="true" />
+      <div className="section-ambient-mandala" aria-hidden="true" />
+
       <div className="container">
         <div className="travel-header">
           <h2 className="section-title">Getting There</h2>
