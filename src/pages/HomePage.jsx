@@ -5,6 +5,7 @@ import StorySection from '../components/sections/StorySection';
 import EventsSection from '../components/sections/EventsSection';
 import JourneySection from '../components/sections/JourneySection';
 import TravelSection from '../components/sections/TravelSection';
+import ActivitiesSection from '../components/sections/ActivitiesSection';
 import RsvpSection from '../components/sections/RsvpSection';
 import FAQSection from '../components/sections/FAQSection';
 import FooterSection from '../components/sections/FooterSection';
@@ -35,6 +36,7 @@ function HomePage() {
         <EventsSection />
         <RsvpSection />
         <TravelSection />
+        <ActivitiesSection />
         <JourneySection />
         <FAQSection />
       </main>

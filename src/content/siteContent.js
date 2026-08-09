@@ -1,9 +1,32 @@
 export const navigation = [
-  { label: 'Celebrations', href: '#events' },
-  { label: 'The Journey', href: '#journey' },
-  { label: 'Travel & Stay', href: '#travel' },
+  { label: 'Celebrations', href: '#celebrations' },
   { label: 'RSVP', href: '#rsvp' },
+  { label: 'Travel', href: '#travel' },
+  { label: 'Activities', href: '#activities' },
   { label: 'FAQ', href: '#faq' }
+];
+
+export const activityCards = [
+  {
+    title: 'Gateway of India & Colaba',
+    tag: 'Sightseeing',
+    copy: 'Start at the Gateway of India, then wander Colaba Causeway for street shopping, cafés, and the nearby art galleries of Kala Ghoda.'
+  },
+  {
+    title: 'Marine Drive',
+    tag: 'Evening stroll',
+    copy: "Mumbai's iconic sea-facing promenade — best at sunset, and again after dark when it lights up as the \"Queen's Necklace.\""
+  },
+  {
+    title: 'Elephanta Caves',
+    tag: 'Day trip',
+    copy: 'A short ferry ride from the Gateway of India to ancient rock-cut cave temples on Elephanta Island — plan for half a day.'
+  },
+  {
+    title: 'Bandra & Bollywood',
+    tag: 'Culture & food',
+    copy: "Explore Bandra's street art and boutiques, or take a Bollywood studio tour if you're curious about how Mumbai's film industry works."
+  }
 ];
 
 export const events = [
