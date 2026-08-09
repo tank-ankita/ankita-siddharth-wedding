@@ -1,5 +1,4 @@
 export const navigation = [
-  { label: 'Our Story', href: '#story' },
   { label: 'Celebrations', href: '#events' },
   { label: 'The Journey', href: '#journey' },
   { label: 'Travel & Stay', href: '#travel' },

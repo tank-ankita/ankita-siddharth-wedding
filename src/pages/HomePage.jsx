@@ -32,11 +32,10 @@ function HomePage() {
       <NavBar mobileMenuOpen={mobileMenuOpen} setMobileMenuOpen={setMobileMenuOpen} />
       <main>
         <HeroSection />
-        <StorySection />
         <EventsSection />
-        <JourneySection />
-        <TravelSection />
         <RsvpSection />
+        <TravelSection />
+        <JourneySection />
         <FAQSection />
       </main>
       <FooterSection />

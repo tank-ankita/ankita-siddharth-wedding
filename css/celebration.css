@@ -1,0 +1,492 @@
+/* CelebrationTimeline.css */
+
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Great+Vibes&family=Montserrat:wght@400;500;600&display=swap");
+
+:root {
+  --wedding-paper: #f5ead8;
+  --wedding-paper-light: #fff9ed;
+  --wedding-ink: #3f2a21;
+  --wedding-muted: #725e50;
+  --wedding-gold: #b78132;
+  --wedding-gold-light: #d3ad65;
+  --wedding-maroon: #7b201f;
+  --wedding-blue: #124f91;
+  --wedding-border: rgba(183, 129, 50, 0.4);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.celebration-section {
+  position: relative;
+  overflow: hidden;
+  color: var(--wedding-ink);
+  background:
+    radial-gradient(
+      circle at 8% 15%,
+      rgba(199, 81, 58, 0.15),
+      transparent 27%
+    ),
+    radial-gradient(
+      circle at 94% 35%,
+      rgba(46, 104, 163, 0.12),
+      transparent 30%
+    ),
+    linear-gradient(
+      90deg,
+      rgba(139, 52, 37, 0.06),
+      transparent 18%,
+      transparent 82%,
+      rgba(28, 83, 143, 0.06)
+    ),
+    var(--wedding-paper);
+
+  padding: 110px 24px 130px;
+  isolation: isolate;
+}
+
+.celebration-section::before {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  content: "";
+  opacity: 0.22;
+  pointer-events: none;
+
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent 0,
+      transparent 3px,
+      rgba(88, 52, 31, 0.025) 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0,
+      transparent 5px,
+      rgba(88, 52, 31, 0.02) 6px
+    );
+}
+
+.celebration-section__container {
+  width: min(1180px, 100%);
+  margin: 0 auto;
+}
+
+.celebration-section__header {
+  width: min(900px, 100%);
+  margin: 0 auto 90px;
+  text-align: center;
+}
+
+.celebration-section__kicker {
+  margin: 0 0 16px;
+  color: var(--wedding-maroon);
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.celebration-section__header h2 {
+  margin: 0;
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(3.3rem, 6.5vw, 6rem);
+  font-weight: 400;
+  line-height: 1.05;
+}
+
+.celebration-section__introduction,
+.celebration-section__story {
+  margin: 25px auto 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(1.2rem, 2vw, 1.55rem);
+  font-style: italic;
+  line-height: 1.65;
+}
+
+.celebration-section__story {
+  max-width: 820px;
+  color: var(--wedding-muted);
+}
+
+.ornamental-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: min(270px, 70%);
+  margin: 24px auto;
+  gap: 12px;
+}
+
+.ornamental-divider span:not(.ornamental-divider__diamond) {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--wedding-gold),
+    transparent
+  );
+}
+
+.ornamental-divider__diamond {
+  color: var(--wedding-gold);
+  font-size: 0.65rem;
+}
+
+.celebration-timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 90px;
+}
+
+.celebration-timeline__line {
+  position: absolute;
+  top: 20px;
+  bottom: 20px;
+  left: 50%;
+  width: 2px;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--wedding-gold-light) 4%,
+    var(--wedding-gold) 50%,
+    var(--wedding-gold-light) 96%,
+    transparent
+  );
+}
+
+.timeline-event {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 90px 1fr;
+  align-items: center;
+  min-height: 620px;
+}
+
+.timeline-event__marker {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 5;
+  display: grid;
+  width: 58px;
+  height: 58px;
+  border: 1px solid var(--wedding-gold);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  place-items: center;
+  background: var(--wedding-paper-light);
+  box-shadow:
+    0 0 0 8px rgba(245, 234, 216, 0.95),
+    0 7px 25px rgba(73, 43, 25, 0.14);
+}
+
+.timeline-event__marker::before,
+.timeline-event__marker::after {
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border: 1px solid var(--wedding-gold);
+  transform: rotate(45deg);
+  background: var(--wedding-paper-light);
+  content: "";
+}
+
+.timeline-event__marker::before {
+  top: -6px;
+}
+
+.timeline-event__marker::after {
+  bottom: -6px;
+}
+
+.timeline-event__marker span {
+  color: var(--wedding-maroon);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.timeline-event__card {
+  position: relative;
+  width: min(500px, 100%);
+  overflow: hidden;
+  border: 1px solid var(--wedding-border);
+  border-radius: 220px 220px 24px 24px;
+  background: rgba(255, 249, 237, 0.7);
+  box-shadow: 0 28px 60px rgba(76, 43, 24, 0.12);
+  backdrop-filter: blur(3px);
+  transition:
+    transform 300ms ease,
+    box-shadow 300ms ease;
+}
+
+.timeline-event__card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 35px 75px rgba(76, 43, 24, 0.18);
+}
+
+.timeline-event--left .timeline-event__card {
+  grid-column: 1;
+  justify-self: end;
+}
+
+.timeline-event--right .timeline-event__card {
+  grid-column: 3;
+  justify-self: start;
+}
+
+.timeline-event__celebration-image-wrapper {
+  position: relative;
+  display: grid;
+  min-height: 290px;
+  padding: 52px 40px 15px;
+  place-items: center;
+}
+
+.timeline-event__arch {
+  position: absolute;
+  inset: 20px 45px 0;
+  border: 1.5px solid var(--wedding-gold-light);
+  border-bottom: 0;
+  border-radius: 180px 180px 0 0;
+}
+
+.timeline-event__arch::before {
+  position: absolute;
+  inset: 10px;
+  border: 1px solid rgba(183, 129, 50, 0.35);
+  border-bottom: 0;
+  border-radius: inherit;
+  content: "";
+}
+
+.timeline-event__celebration-image {
+  position: relative;
+  z-index: 2;
+  width: min(230px, 80%);
+  height: 215px;
+  object-fit: contain;
+  filter: drop-shadow(0 13px 12px rgba(67, 37, 22, 0.1));
+}
+
+.timeline-event__content {
+  padding: 25px 42px 38px;
+  text-align: center;
+}
+
+.timeline-event__eyebrow {
+  margin: 0 0 11px;
+  color: var(--wedding-maroon);
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.timeline-event__title {
+  margin: 0;
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(2.8rem, 4vw, 4rem);
+  font-weight: 400;
+  line-height: 1.05;
+}
+
+.timeline-event__details {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.25rem;
+  font-style: italic;
+  line-height: 1.4;
+}
+
+.timeline-event__details p {
+  margin: 4px 0;
+}
+
+.timeline-event__venue {
+  margin-top: 14px !important;
+  color: var(--wedding-maroon);
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.timeline-event__description {
+  max-width: 370px;
+  margin: 18px auto 8px;
+  color: var(--wedding-muted);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.08rem;
+  line-height: 1.55;
+}
+
+.timeline-event__venue-image-wrapper {
+  position: relative;
+  margin-top: 25px;
+  padding-top: 20px;
+}
+
+.timeline-event__venue-image-wrapper::before {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 100px;
+  height: 1px;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--wedding-gold),
+    transparent
+  );
+  content: "";
+}
+
+.timeline-event__venue-image {
+  width: 100%;
+  height: 190px;
+  object-fit: contain;
+  opacity: 0.85;
+  mix-blend-mode: multiply;
+  filter: sepia(0.3);
+}
+
+.celebration-section__ornament {
+  position: absolute;
+  z-index: -1;
+  width: 320px;
+  height: 320px;
+  border: 1px solid rgba(183, 129, 50, 0.2);
+  border-radius: 50%;
+  opacity: 0.6;
+}
+
+.celebration-section__ornament::before,
+.celebration-section__ornament::after {
+  position: absolute;
+  inset: 35px;
+  border: 1px solid rgba(183, 129, 50, 0.16);
+  border-radius: 50%;
+  content: "";
+}
+
+.celebration-section__ornament--left {
+  top: 350px;
+  left: -210px;
+}
+
+.celebration-section__ornament--right {
+  right: -210px;
+  bottom: 250px;
+}
+
+/* Tablet and mobile */
+
+@media (max-width: 900px) {
+  .celebration-section {
+    padding: 85px 18px 100px;
+  }
+
+  .celebration-section__header {
+    margin-bottom: 65px;
+  }
+
+  .celebration-timeline {
+    gap: 60px;
+  }
+
+  .celebration-timeline__line {
+    left: 28px;
+    transform: none;
+  }
+
+  .timeline-event {
+    display: block;
+    min-height: auto;
+    padding-left: 72px;
+  }
+
+  .timeline-event__marker {
+    top: 80px;
+    left: 29px;
+    width: 48px;
+    height: 48px;
+  }
+
+  .timeline-event__card,
+  .timeline-event--left .timeline-event__card,
+  .timeline-event--right .timeline-event__card {
+    width: 100%;
+    justify-self: auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .celebration-section {
+    padding-inline: 13px;
+  }
+
+  .celebration-section__header h2 {
+    font-size: 3.6rem;
+  }
+
+  .celebration-timeline__line {
+    left: 19px;
+  }
+
+  .timeline-event {
+    padding-left: 48px;
+  }
+
+  .timeline-event__marker {
+    left: 20px;
+    width: 38px;
+    height: 38px;
+    box-shadow: 0 0 0 5px rgba(245, 234, 216, 0.95);
+  }
+
+  .timeline-event__marker span {
+    font-size: 1rem;
+  }
+
+  .timeline-event__card {
+    border-radius: 130px 130px 20px 20px;
+  }
+
+  .timeline-event__celebration-image-wrapper {
+    min-height: 235px;
+    padding: 42px 25px 10px;
+  }
+
+  .timeline-event__arch {
+    inset: 18px 25px 0;
+  }
+
+  .timeline-event__celebration-image {
+    height: 175px;
+  }
+
+  .timeline-event__content {
+    padding: 20px 23px 30px;
+  }
+
+  .timeline-event__title {
+    font-size: 3rem;
+  }
+
+  .timeline-event__venue-image {
+    height: 145px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .timeline-event__card {
+    transition: none;
+  }
+}
