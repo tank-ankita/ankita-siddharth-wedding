@@ -7,7 +7,6 @@ import TravelSection from '../components/sections/TravelSection';
 import ActivitiesSection from '../components/sections/ActivitiesSection';
 import RsvpSection from '../components/sections/RsvpSection';
 import FAQSection from '../components/sections/FAQSection';
-import FooterSection from '../components/sections/FooterSection';
 
 function HomePage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -38,7 +37,6 @@ function HomePage() {
         <ActivitiesSection />
         <FAQSection />
       </main>
-      <FooterSection />
     </div>
   );
 }

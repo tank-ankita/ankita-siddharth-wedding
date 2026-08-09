@@ -35,13 +35,15 @@
     to bottom,
     transparent 0,
     #000 160px,
-    #000 100%
+    #000 calc(100% - 160px),
+    transparent 100%
   );
   mask-image: linear-gradient(
     to bottom,
     transparent 0,
     #000 160px,
-    #000 100%
+    #000 calc(100% - 160px),
+    transparent 100%
   );
 }
 
@@ -325,8 +327,8 @@
   }
 
   .faq-section::before {
-    -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 90px, #000 100%);
-    mask-image: linear-gradient(to bottom, transparent 0, #000 90px, #000 100%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 90px, #000 calc(100% - 90px), transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0, #000 90px, #000 calc(100% - 90px), transparent 100%);
   }
 
   .faq-section__intro h2 {

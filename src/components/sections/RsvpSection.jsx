@@ -1,127 +1,341 @@
-import { useState } from 'react';
-import logo from '../../../assets/logo.png';
+import { useState } from "react";
+import '../../../css/RSVPSection.css';
 
-function RsvpSection() {
-  const [attendance, setAttendance] = useState('accepts');
+const celebrationOptions = [
+  { id: "sangeet", label: "Sangeet Night", date: "Thursday, 28th January" },
+  { id: "wedding", label: "Wedding Ceremony", date: "Friday, 29th January" },
+  { id: "reception", label: "Reception Soirée", date: "Saturday, 30th January" },
+];
+
+const initialForm = {
+  fullName: "",
+  email: "",
+  attendance: "accepts",
+  guestCount: "1",
+  celebrations: ["sangeet", "wedding", "reception"],
+  arrivalDate: "",
+  accommodation: "no",
+  airportPickup: "no",
+  dietaryNotes: "",
+};
+
+export default function RSVPSection() {
+  const [formData, setFormData] = useState(initialForm);
   const [submitted, setSubmitted] = useState(false);
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setFormData((current) => ({
+      ...current,
+      [name]: value,
+    }));
+  };
+
+  const handleCelebrationChange = (event) => {
+    const { value, checked } = event.target;
+
+    setFormData((current) => ({
+      ...current,
+      celebrations: checked
+        ? [...current.celebrations, value]
+        : current.celebrations.filter((id) => id !== value),
+    }));
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    /*
+      Replace this with your API, Firebase, Supabase,
+      Formspree or Google Apps Script request.
+    */
+
+    console.log("RSVP submission:", formData);
     setSubmitted(true);
   };
 
   return (
-    <section className="section-shell" id="rsvp">
-      <div className="container">
-        <div className="rsvp-panel">
-          <div className="rsvp-header">
-            <img src={logo} alt="Wedding logo" className="rsvp-logo" />
-            <p className="section-eyebrow" style={{ color: '#e3c889' }}>Kindly respond by 1st December</p>
-            <h2 className="section-title rsvp-title">RSVP</h2>
-          </div>
-          <div className="rsvp-intro">
-            <p className="section-copy" style={{ color: 'rgba(247,235,216,0.9)' }}>
-              Three days, one big celebration. We would be honoured to have you with us for all of it. Please share your response below so we can plan the celebrations with love.
-            </p>
-            <div className="rsvp-divider" />
-          </div>
-          <form action="https://formspree.io/f/your-form-id" method="POST" onSubmit={handleSubmit}>
-            <div className="form-row">
-              <label htmlFor="name">Your name</label>
-              <input id="name" name="name" placeholder="Jane & John Doe" required />
-            </div>
+    <section className="rsvp-section" id="rsvp">
+      <div className="rsvp-section__wash rsvp-section__wash--left" />
+      <div className="rsvp-section__wash rsvp-section__wash--right" />
+      <div className="rsvp-section__mandala" />
 
-            <div className="form-row">
-              <label>Will you be attending the wedding?</label>
-              <div className="radio-group">
-                <label className="radio-option">
-                  <input
-                    type="radio"
-                    name="attendance"
-                    value="accepts"
-                    checked={attendance === 'accepts'}
-                    onChange={(event) => setAttendance(event.target.value)}
-                  />
-                  Joyfully accepts
-                </label>
-                <label className="radio-option">
-                  <input
-                    type="radio"
-                    name="attendance"
-                    value="declines"
-                    checked={attendance === 'declines'}
-                    onChange={(event) => setAttendance(event.target.value)}
-                  />
-                  Regretfully declines
-                </label>
+      <div className="rsvp-section__inner">
+        <header className="rsvp-section__intro">
+          <p className="rsvp-section__eyebrow">Kindly Respond</p>
+
+          <h2>Will You Join Us?</h2>
+
+          <div className="rsvp-section__ornament" aria-hidden="true">
+            <span />
+            <i>✦</i>
+            <span />
+          </div>
+
+          <p className="rsvp-section__description">
+            We would be honoured to celebrate with you in Mumbai. Please
+            respond for each invited guest by October 1, 2026.
+          </p>
+
+         
+        </header>
+
+        <div className="rsvp-form-wrapper">
+          <span
+            className="rsvp-form-wrapper__corner rsvp-form-wrapper__corner--top"
+            aria-hidden="true"
+          />
+          <span
+            className="rsvp-form-wrapper__corner rsvp-form-wrapper__corner--bottom"
+            aria-hidden="true"
+          />
+
+          {submitted ? (
+            formData.attendance === "declines" ? (
+              <div className="rsvp-success" aria-live="polite">
+                <span aria-hidden="true">✦</span>
+                <h3>We'll miss you</h3>
+                <p>
+                  We're so sorry you can't make it. You'll be missed! Thanks
+                  for letting us know. If anything changes, feel free to
+                  reach out. We'd love to have you if you can make it after
+                  all.
+                </p>
+
+                <button
+                  type="button"
+                  onClick={() => {
+                    setFormData(initialForm);
+                    setSubmitted(false);
+                  }}
+                >
+                  Submit another response
+                </button>
               </div>
-            </div>
-
-            {attendance === 'declines' ? (
-              <p className="decline-note">
-                We’re so sorry you can’t make it. You’ll be missed. Thanks for letting us know. If anything changes, feel free to reach out. We’d love to have you if you can make it after all.
-              </p>
             ) : (
-              <div className="nested-form">
-                <div className="form-row">
-                  <label>Which celebrations will you attend?</label>
-                  <div className="checkbox-group">
-                    <label className="checkbox"><input type="checkbox" name="events" value="Sangeet Night · 28 January" /> Sangeet Night · 28 January</label>
-                    <label className="checkbox"><input type="checkbox" name="events" value="Wedding Ceremony · 29 January" /> Wedding Ceremony · 29 January</label>
-                    <label className="checkbox"><input type="checkbox" name="events" value="Reception · 30 January" /> Reception · 30 January</label>
-                  </div>
-                </div>
+              <div className="rsvp-success" aria-live="polite">
+                <span aria-hidden="true">✦</span>
+                <h3>Thank you for responding</h3>
+                <p>
+                  Your RSVP has been received. We cannot wait to celebrate
+                  with you in Mumbai.
+                </p>
 
-                <div className="form-row">
-                  <label>If arriving from outside Mumbai, will you require accommodation?</label>
-                  <div className="radio-group">
-                    <label className="radio-option">
-                      <input type="radio" name="accommodation" value="yes" /> Yes
-                    </label>
-                    <label className="radio-option">
-                      <input type="radio" name="accommodation" value="no" /> No
-                    </label>
-                  </div>
-                </div>
-
-                <div className="form-row">
-                  <label>Will you require airport or station pickup?</label>
-                  <div className="radio-group">
-                    <label className="radio-option">
-                      <input type="radio" name="pickup" value="yes" /> Yes
-                    </label>
-                    <label className="radio-option">
-                      <input type="radio" name="pickup" value="no" /> No
-                    </label>
-                  </div>
-                </div>
-
-                <div className="form-row">
-                  <label htmlFor="dietary">Any dietary preferences?</label>
-                  <textarea id="dietary" name="dietary" rows="3" placeholder="Please share any preferences or allergies here." />
-                </div>
-
-                <div className="form-row">
-                  <label>Are you coming with a +1?</label>
-                  <div className="radio-group">
-                    <label className="radio-option">
-                      <input type="radio" name="plusOne" value="yes" /> Yes
-                    </label>
-                    <label className="radio-option">
-                      <input type="radio" name="plusOne" value="no" /> No
-                    </label>
-                  </div>
-                </div>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setFormData(initialForm);
+                    setSubmitted(false);
+                  }}
+                >
+                  Submit another response
+                </button>
               </div>
-            )}
+            )
+          ) : (
+            <form className="rsvp-form" onSubmit={handleSubmit}>
+              <label className="rsvp-field">
+                <span>Full name</span>
 
-            <button className="submit-btn" type="submit">Submit RSVP</button>
-            {submitted && <p className="form-success">Thank you for your RSVP. We’ve received your response.</p>}
-          </form>
+                <input
+                  type="text"
+                  name="fullName"
+                  value={formData.fullName}
+                  onChange={handleChange}
+                  placeholder="Enter your full name"
+                  required
+                />
+              </label>
+
+              <fieldset className="rsvp-fieldset">
+                <legend>Will you be attending?</legend>
+
+                <div className="rsvp-choice-row">
+                  <label>
+                    <input
+                      type="radio"
+                      name="attendance"
+                      value="accepts"
+                      checked={formData.attendance === "accepts"}
+                      onChange={handleChange}
+                    />
+
+                    <span>Joyfully accepts</span>
+                  </label>
+
+                  <label>
+                    <input
+                      type="radio"
+                      name="attendance"
+                      value="declines"
+                      checked={formData.attendance === "declines"}
+                      onChange={handleChange}
+                    />
+
+                    <span>Regretfully declines</span>
+                  </label>
+                </div>
+              </fieldset>
+
+              {formData.attendance === "accepts" && (
+                <>
+                  <label className="rsvp-field">
+                    <span>Email address</span>
+
+                    <input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      placeholder="you@example.com"
+                      required
+                    />
+                  </label>
+
+                  <label className="rsvp-field">
+                    <span>Number of guests</span>
+
+                    <select
+                      name="guestCount"
+                      value={formData.guestCount}
+                      onChange={handleChange}
+                    >
+                      <option value="1">1 guest</option>
+                      <option value="2">2 guests</option>
+                      <option value="3">3 guests</option>
+                      <option value="4">4 guests</option>
+                    </select>
+                  </label>
+
+                  <fieldset className="rsvp-fieldset">
+                    <legend>Which celebrations will you attend?</legend>
+
+                    <div className="rsvp-celebration-list">
+                      {celebrationOptions.map((celebration) => (
+                        <label
+                          className="rsvp-celebration-check"
+                          key={celebration.id}
+                        >
+                          <input
+                            type="checkbox"
+                            value={celebration.id}
+                            checked={formData.celebrations.includes(
+                              celebration.id
+                            )}
+                            onChange={handleCelebrationChange}
+                          />
+
+                          <span className="rsvp-celebration-check__text">
+                            <span className="rsvp-celebration-check__name">
+                              {celebration.label}
+                            </span>
+                            <span className="rsvp-celebration-check__date">
+                              {celebration.date}
+                            </span>
+                          </span>
+                        </label>
+                      ))}
+                    </div>
+                  </fieldset>
+
+                  <label className="rsvp-field">
+                    <span>When are you arriving in Mumbai?</span>
+
+                    <input
+                      type="date"
+                      name="arrivalDate"
+                      value={formData.arrivalDate}
+                      onChange={handleChange}
+                    />
+                  </label>
+
+                  <fieldset className="rsvp-fieldset">
+                    <legend>Will you require accommodation?</legend>
+
+                    <div className="rsvp-choice-row">
+                      <label>
+                        <input
+                          type="radio"
+                          name="accommodation"
+                          value="yes"
+                          checked={formData.accommodation === "yes"}
+                          onChange={handleChange}
+                        />
+
+                        <span>Yes</span>
+                      </label>
+
+                      <label>
+                        <input
+                          type="radio"
+                          name="accommodation"
+                          value="no"
+                          checked={formData.accommodation === "no"}
+                          onChange={handleChange}
+                        />
+
+                        <span>No</span>
+                      </label>
+                    </div>
+                  </fieldset>
+
+                  <fieldset className="rsvp-fieldset">
+                    <legend>Will you require airport pickup?</legend>
+
+                    <div className="rsvp-choice-row">
+                      <label>
+                        <input
+                          type="radio"
+                          name="airportPickup"
+                          value="yes"
+                          checked={formData.airportPickup === "yes"}
+                          onChange={handleChange}
+                        />
+
+                        <span>Yes</span>
+                      </label>
+
+                      <label>
+                        <input
+                          type="radio"
+                          name="airportPickup"
+                          value="no"
+                          checked={formData.airportPickup === "no"}
+                          onChange={handleChange}
+                        />
+
+                        <span>No</span>
+                      </label>
+                    </div>
+                  </fieldset>
+
+                  <label className="rsvp-field">
+                    <span>Any dietary preferences</span>
+
+                    <textarea
+                      name="dietaryNotes"
+                      value={formData.dietaryNotes}
+                      onChange={handleChange}
+                      rows="4"
+                      placeholder="Vegetarian preferences, allergies or anything else we should know"
+                    />
+                  </label>
+                </>
+              )}
+
+              <button className="rsvp-form__submit" type="submit">
+                Send My RSVP
+                <span aria-hidden="true">→</span>
+              </button>
+
+              <p className="rsvp-form__privacy">
+                Your details will only be used for wedding planning.
+              </p>
+            </form>
+          )}
         </div>
       </div>
     </section>
   );
 }
-
-export default RsvpSection;

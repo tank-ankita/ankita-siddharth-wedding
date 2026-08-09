@@ -1146,21 +1146,6 @@ button, input, textarea, select { font: inherit; }
 .faq-item h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; margin: 0 0 0.4rem; color: var(--maroon-deep); }
 .faq-item p { margin: 0; color: var(--paper-ink); }
 
-.footer {
-  padding: 2.8rem 0 3rem;
-  color: rgba(247,235,216,0.84);
-  background: linear-gradient(180deg, rgba(18,39,32,0.96), rgba(8,19,16,0.98));
-  margin-top: 2rem;
-}
-
-.footer__inner {
-  width: min(1180px, calc(100% - 2rem));
-  margin: 0 auto;
-  text-align: center;
-}
-
-.footer__brand { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--gold-soft); margin-bottom: 0.5rem; }
-
 @media (max-width: 900px) {
   .hero__content, .journey__layout { grid-template-columns: 1fr; }
   .event-grid, .travel-grid { grid-template-columns: 1fr; }
