@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 -m http.server 8080)",
+      "Bash(curl -sI http://localhost:8080/index.html)",
+      "Bash(gh auth *)",
+      "Bash(brew list *)",
+      "Bash(brew install *)"
+    ]
+  }
+}
