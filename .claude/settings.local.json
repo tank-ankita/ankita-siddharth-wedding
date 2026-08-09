@@ -5,7 +5,8 @@
       "Bash(curl -sI http://localhost:8080/index.html)",
       "Bash(gh auth *)",
       "Bash(brew list *)",
-      "Bash(brew install *)"
+      "Bash(brew install *)",
+      "Bash(grep -n \"^h3\\\\|h3 {\\\\|h3,\\\\|, h3\\\\| h3 \" /Users/tank/Documents/marriage/invite/wedding-site/src/styles.css)"
     ]
   }
 }

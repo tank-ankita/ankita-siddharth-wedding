@@ -1,11 +1,11 @@
 // CelebrationTimeline.jsx
 
-import sangeetImage from '../../../assets/celebrations/01_sangeet_dancers.png';
-import weddingImage from '../../../assets/celebrations/02_wedding_mandap.png';
-import receptionImage from '../../../assets/celebrations/03_reception_glasses.png';
-import eskayVenueImage from '../../../assets/celebrations/04_eskay_resort.png';
-import saharaVenueImage from '../../../assets/celebrations/05_sahara_star.png';
-import receptionVenueImage from '../../../assets/celebrations/06_reception_venue.png';
+import sangeetImage from '../../../assets/celebrations/dancing_doll.png';
+import weddingImage from '../../../assets/celebrations/chairs.png';
+import receptionImage from '../../../assets/celebrations/glassses.png';
+import eskayVenueImage from '../../../assets/celebrations/sangeet_location.png';
+import saharaVenueImage from '../../../assets/celebrations/sahara_star.png';
+import receptionVenueImage from '../../../assets/celebrations/reception.png';
 import '../../../css/celebration.css';
 
 const celebrationEvents = [
@@ -40,18 +40,26 @@ const celebrationEvents = [
   {
     id: 3,
     eyebrow: "Reception",
-    title: "Celebration Soirée",
+    title: "Celebration\nSoirée",
     date: "Saturday, 30th January",
     time: "7:30 PM onwards",
     venue: "Eskay Resorts",
     description:
-      "Dinner, laughter, and one final evening of celebration with our favorite people.",
+      "Dinner, laughter, and one\nfinal evening of celebration\nwith our favorite people.",
     celebrationImage: receptionImage,
     venueImage: receptionVenueImage,
     imageAlt: "Two champagne glasses celebrating the reception",
     venueImageAlt: "Illustration of the reception venue",
   },
 ];
+
+function withLineBreaks(text) {
+  return text
+    .split("\n")
+    .flatMap((line, i, lines) =>
+      i < lines.length - 1 ? [line, <br key={i} />] : [line]
+    );
+}
 
 function OrnamentalDivider() {
   return (
@@ -63,53 +71,50 @@ function OrnamentalDivider() {
   );
 }
 
-function TimelineEvent({ event, index }) {
+function EventCard({ event }) {
   return (
-    <article
-      className={`timeline-event ${
-        index % 2 === 0 ? "timeline-event--left" : "timeline-event--right"
-      }`}
-    >
-      <div className="timeline-event__marker" aria-hidden="true">
-        <span>{index + 1}</span>
+    <article className="celebration-card">
+      <div className="celebration-card__celebration-image-wrapper">
+        <div className="celebration-card__arch" aria-hidden="true" />
+
+        <img
+          src={event.celebrationImage}
+          alt={event.imageAlt}
+          className={`celebration-card__celebration-image${
+            event.id === 2 ? " celebration-card__celebration-image--large" : ""
+          }`}
+          loading="lazy"
+        />
       </div>
 
-      <div className="timeline-event__card">
-        <div className="timeline-event__celebration-image-wrapper">
-          <div className="timeline-event__arch" aria-hidden="true" />
+      <div className="celebration-card__content">
+        <p className="celebration-card__eyebrow">{event.eyebrow}</p>
 
-          <img
-            src={event.celebrationImage}
-            alt={event.imageAlt}
-            className="timeline-event__celebration-image"
-            loading="lazy"
-          />
+        <h3 className="celebration-card__title">
+          {withLineBreaks(event.title)}
+        </h3>
+        <p className="celebration-card__description">
+          {withLineBreaks(event.description)}
+        </p>
+
+        <OrnamentalDivider />
+
+        <div className="celebration-card__details">
+          <p className="celebration-card__venue">{event.venue}</p>
+          <p>{event.date}</p>
+          <p>{event.time}</p>
         </div>
 
-        <div className="timeline-event__content">
-          <p className="timeline-event__eyebrow">{event.eyebrow}</p>
+        
+      </div>
 
-          <h3 className="timeline-event__title">{event.title}</h3>
-
-          <OrnamentalDivider />
-
-          <div className="timeline-event__details">
-            <p>{event.date}</p>
-            <p>{event.time}</p>
-            <p className="timeline-event__venue">{event.venue}</p>
-          </div>
-
-          <p className="timeline-event__description">{event.description}</p>
-
-          <div className="timeline-event__venue-image-wrapper">
-            <img
-              src={event.venueImage}
-              alt={event.venueImageAlt}
-              className="timeline-event__venue-image"
-              loading="lazy"
-            />
-          </div>
-        </div>
+      <div className="celebration-card__venue-image-wrapper">
+        <img
+          src={event.venueImage}
+          alt={event.venueImageAlt}
+          className="celebration-card__venue-image"
+          loading="lazy"
+        />
       </div>
     </article>
   );
@@ -143,11 +148,9 @@ export default function EventsSection() {
           </p>
         </header>
 
-        <div className="celebration-timeline">
-          <div className="celebration-timeline__line" aria-hidden="true" />
-
-          {celebrationEvents.map((event, index) => (
-            <TimelineEvent key={event.id} event={event} index={index} />
+        <div className="celebration-cards">
+          {celebrationEvents.map((event) => (
+            <EventCard key={event.id} event={event} />
           ))}
         </div>
       </div>
