@@ -610,12 +610,21 @@ button, input, textarea, select { font: inherit; }
 @media (max-width: 900px) {
   .hero {
     min-height: auto;
-    padding: 4rem 0 3rem;
+    padding: 9rem 0 3rem;
   }
 
   .hero.section-shell::before {
+    background-size: cover;
     -webkit-mask-image: linear-gradient(to bottom, #000 0, #000 calc(100% - 90px), transparent 100%);
     mask-image: linear-gradient(to bottom, #000 0, #000 calc(100% - 90px), transparent 100%);
+  }
+
+  .hero__lantern {
+    height: 130px !important;
+  }
+
+  .hero__lantern-cluster .hero__lantern:not(:first-child) {
+    margin-left: -18px;
   }
 
   .travel-section::after {
@@ -712,11 +721,15 @@ button, input, textarea, select { font: inherit; }
   }
 
   .hero {
-    padding: 3rem 0 2.5rem;
+    padding: 6.5rem 0 2.5rem;
   }
 
   .hero__lantern {
-    height: 90px !important;
+    height: 85px !important;
+  }
+
+  .hero__lantern-cluster .hero__lantern:not(:first-child) {
+    margin-left: -12px;
   }
 
   .hero__title {
