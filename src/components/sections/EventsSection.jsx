@@ -1,5 +1,6 @@
 // CelebrationTimeline.jsx
 
+import eventsBackgroundImage from '../../../assets/background/events_background.png';
 import sangeetImage from '../../../assets/celebrations/dancing_doll.png';
 import weddingImage from '../../../assets/celebrations/chairs.png';
 import receptionImage from '../../../assets/celebrations/glassses.png';
@@ -122,7 +123,11 @@ function EventCard({ event }) {
 
 export default function EventsSection() {
   return (
-    <section className="celebration-section" id="celebrations">
+    <section
+      className="celebration-section"
+      id="celebrations"
+      style={{ '--celebration-bg-image': `url(${eventsBackgroundImage})` }}
+    >
       <div className="celebration-section__ornament celebration-section__ornament--left" />
       <div className="celebration-section__ornament celebration-section__ornament--right" />
 

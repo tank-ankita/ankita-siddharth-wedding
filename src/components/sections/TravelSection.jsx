@@ -1,18 +1,51 @@
 import { travelCards } from '../../content/siteContent';
+import planeIcon from '../../../assets/travel/to-mumbai.png';
+import taxiIcon from '../../../assets/travel/taxi.png';
+import trainIcon from '../../../assets/travel/train.png';
+import travelBackgroundImage from '../../../assets/travel/background_travel_2.png';
+
+const icons = {
+  plane: planeIcon,
+  taxi: taxiIcon,
+  train: trainIcon
+};
+
+function withLineBreaks(text) {
+  return text
+    .split('\n')
+    .flatMap((line, i, lines) =>
+      i < lines.length - 1 ? [line, <br key={i} />] : [line]
+    );
+}
 
 function TravelSection() {
   return (
-    <section className="section-shell" id="travel">
+    <section
+      className="section-shell travel-section"
+      id="travel"
+      style={{ '--travel-bg-image': `url(${travelBackgroundImage})` }}
+    >
       <div className="container">
-        <p className="section-eyebrow">For our travelling guests</p>
-        <h2 className="section-title">Travel &amp; Stay</h2>
+        <div className="travel-header">
+          <h2 className="section-title">Getting There</h2>
+          <span className="travel-header__divider" aria-hidden="true" />
+        </div>
         <div className="travel-grid">
           {travelCards.map((card) => (
-            <article className="travel-card" key={card.title}>
+            <article className="travel-card" key={card.id}>
+              <span className="travel-card__icon" aria-hidden="true">
+                <img src={icons[card.id]} alt="" />
+              </span>
               <h3>{card.title}</h3>
-              <p className="travel-card__tag">{card.tag}</p>
-              <p>{card.copy}</p>
-              <a href={card.mapUrl}>{card.title === 'Flying in from abroad?' ? 'Let us know your dates →' : 'View on map →'}</a>
+              <p>{withLineBreaks(card.copy)}</p>
+              <a
+                className="travel-card__button"
+                href={card.mapUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Get Directions
+              </a>
             </article>
           ))}
         </div>

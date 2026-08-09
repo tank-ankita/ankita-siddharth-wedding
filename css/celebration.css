@@ -40,6 +40,7 @@
       transparent 82%,
       rgba(28, 83, 143, 0.06)
     ),
+    var(--celebration-bg-image) center / cover no-repeat,
     var(--wedding-paper);
 
   padding: 110px 24px 130px;

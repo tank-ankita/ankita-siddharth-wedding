@@ -55,22 +55,22 @@ export const events = [
 
 export const travelCards = [
   {
-    title: 'Eskay Resorts',
-    tag: 'Sangeet & Reception',
-    copy: 'Our sangeet and reception both take place here — an easy home base if you would like to stay close to the action for the whole weekend.',
-    mapUrl: 'https://www.google.com/maps/search/Eskay+Resorts+Mumbai'
+    id: 'plane',
+    title: 'Plane',
+    copy: 'The Chhatrapati Shivaji Maharaj International Airport (CSMIA), popularly known as BOM, welcomes flyers from Germany via Lufthansa, Air France, Turkish Airlines, Air India, Kuwait Airways, Emirates, Oman Air, Etihad and Gulf Air, among others.\nFrom the United States, you can connect through Turkish Airlines, Emirates, Etihad, British Airways and Lufthansa.',
+    mapUrl: 'https://www.google.com/maps/search/Chhatrapati+Shivaji+Maharaj+International+Airport'
   },
   {
-    title: 'Sahara Star',
-    tag: 'Wedding Ceremony',
-    copy: 'The Flame & Pheras will be held here, close to Mumbai’s domestic airport — convenient for guests flying in just for the ceremony.',
-    mapUrl: 'https://www.google.com/maps/search/Sahara+Star+Mumbai'
+    id: 'taxi',
+    title: 'Taxi',
+    copy: 'Taxis are the best way to get around Mumbai. Cab share apps like Uber and Ola provide quick and exceptional service, and are easy on the pocket. In case you require any special assistance or airport pickup, then please do not hesitate to reach out.',
+    mapUrl: 'https://www.google.com/maps/search/Mumbai,+India'
   },
   {
-    title: 'Flying in from abroad?',
-    tag: 'Chicago & beyond',
-    copy: 'Fly into Chhatrapati Shivaji Maharaj International Airport (BOM). Most international carriers connect through Delhi, Dubai, Doha or London — book a few months out for the best fares in January.',
-    mapUrl: '#rsvp'
+    id: 'train',
+    title: 'Train & Metro',
+    copy: 'If you’re feeling adventurous, do try out the local trains in Mumbai ;) However, please do take a local with you to navigate the systems. You may also try the metro which is extremely comfortable and quick, as Mumbai traffic jams can be a nightmare. Please download the Mumbai One app on your phone to navigate.',
+    mapUrl: 'https://www.google.com/maps/search/Mumbai+Suburban+Railway'
   }
 ];
 
