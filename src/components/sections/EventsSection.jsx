@@ -128,7 +128,6 @@ export default function EventsSection() {
 
       <div className="celebration-section__container">
         <header className="celebration-section__header">
-          <p className="celebration-section__kicker">The Wedding Celebrations</p>
 
           <h2>A Celebration Across Three Beautiful Days</h2>
 
