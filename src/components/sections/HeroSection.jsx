@@ -1,5 +1,46 @@
 import coupleIllustration from '../../../assets/celebrations/sid_and_me.png';
-import heroBackground from '../../../assets/background/background form gpt.png';
+import heroBackground from '../../../assets/background/background_rect_3.png';
+
+function TypedText({ text, startDelay, charStep, wordClassName }) {
+  const chunks = text.trim().split(/(\s+)/);
+  const chars = [];
+
+  chunks.forEach((chunk, ci) => {
+    if (/^\s+$/.test(chunk)) {
+      chars.push({ key: `sp-${ci}`, char: " ", isSpace: true });
+      return;
+    }
+    [...chunk].forEach((char, j) => {
+      chars.push({
+        key: `c-${ci}-${j}`,
+        char,
+        isSpace: false,
+        className: wordClassName ? wordClassName(chunk) : "",
+      });
+    });
+  });
+
+  const caretDelay = startDelay + chars.length * charStep + 0.1;
+
+  return (
+    <>
+      {chars.map((c, i) =>
+        c.isSpace ? (
+          <span key={c.key}> </span>
+        ) : (
+          <span
+            key={c.key}
+            className={`hero__char${c.className ? ` ${c.className}` : ""}`}
+            style={{ animationDelay: `${startDelay + i * charStep}s` }}
+          >
+            {c.char}
+          </span>
+        )
+      )}
+      <span className="hero__caret" style={{ animationDelay: `${caretDelay}s` }} />
+    </>
+  );
+}
 
 function HeroSection() {
   return (
@@ -7,19 +48,26 @@ function HeroSection() {
       className="hero section-shell"
       id="top"
       style={{
-        backgroundImage: `linear-gradient(110deg, rgba(36, 18, 10, 0.76) 0%, rgba(86, 47, 24, 0.5) 42%, rgba(243, 227, 195, 0.18) 100%), url(${heroBackground})`
+        backgroundImage: `url(${heroBackground})`
       }}
     >
       <div className="container hero__content">
-        <div className="hero__text-panel panel">
+        <div className="hero__text">
           <p className="hero__eyebrow">With joy in our hearts</p>
           <h1 className="hero__title">
-            Ankita <span>&amp;</span> Siddharth
+            <TypedText
+              text="Ankita & Siddharth"
+              startDelay={0.3}
+              charStep={0.045}
+              wordClassName={(word) => (word === "&" ? "hero__title-amp" : "")}
+            />
           </h1>
           <p className="hero__copy">
-            Separated by time zones, united by one feeling. 
-            <br></br>
-            The distance was never the story — this moment is.
+            <TypedText
+              text="invite you to their wedding"
+              startDelay={2.2}
+              charStep={0.035}
+            />
           </p>
           <div className="hero__meta">
             <strong>28 — 30 January 2027</strong>

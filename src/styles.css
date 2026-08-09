@@ -15,7 +15,8 @@
   --shadow: 0 24px 48px rgba(49, 25, 15, 0.18);
   --accent: #8b4d2a;
   font-family: 'Cormorant Garamond', Georgia, serif;
-  --hero-title-font: 'Quattrocento', 'Times New Roman', serif;
+  --hero-title-font: 'Alex Brush', cursive;
+  --hero-script-font: 'Parisienne', cursive;
   --hero-body-font: 'Spectral', 'Georgia', serif;
   line-height: 1.5;
   font-weight: 400;
@@ -138,7 +139,7 @@ button, input, textarea, select { font: inherit; }
   mix-blend-mode: multiply;
   opacity: 0.16;
   background-image:
-    linear-gradient(120deg, rgba(255,255,255,0.14), transparent 36%),
+   
     radial-gradient(circle at 20% 20%, rgba(94,69,40,0.08), transparent 26%),
     radial-gradient(circle at 80% 80%, rgba(94,69,40,0.08), transparent 24%),
     url('/assets/background/antique-paper-texture-with-torn-edges-perfect-for-vintage-design-aged-backgrounds-and-historical-documents-photo.jpeg');
@@ -321,7 +322,7 @@ button, input, textarea, select { font: inherit; }
 
 .navbar__links {
   display: flex;
-  gap: 1.2rem;
+  gap: 3.0rem;
   align-items: center;
   flex-wrap: wrap;
   justify-content: flex-end;
@@ -372,28 +373,18 @@ button, input, textarea, select { font: inherit; }
 }
 
 .hero {
-  min-height: 92vh;
+  min-height: 58vh;
   display: grid;
   align-items: center;
-  padding: 5rem 0 4rem;
+  padding: 4rem 0 3rem;
   overflow: hidden;
   position: relative;
   isolation: isolate;
   background-color: #b88a55;
   background-position: center;
-  background-size: cover;
+  background-size: 100% 120%;
   background-repeat: no-repeat;
   border-bottom: 1px solid rgba(78,57,31,0.16);
-}
-
-.hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at top left, rgba(255,255,255,0.08), transparent 30%),
-    radial-gradient(circle at bottom right, rgba(138, 69, 29, 0.16), transparent 40%);
-  pointer-events: none;
-  z-index: 0;
 }
 
 .hero__content {
@@ -405,79 +396,142 @@ button, input, textarea, select { font: inherit; }
   grid-template-columns: 1.2fr 0.8fr;
 }
 
-.hero__text-panel {
-  padding: clamp(1.6rem, 2.6vw, 2.4rem);
-  max-width: 720px;
-  background-color: rgba(255, 248, 239, 0.60);
-  background-image: linear-gradient(135deg, rgba(255, 248, 239, 0.60), rgba(235, 220, 191, 0.60));
-  border: 1px solid rgba(78,57,31,0.1);
-  box-shadow: 0 12px 30px rgba(37, 19, 10, 0.08);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  opacity: 0.5;
-}
-
-.hero__text-panel.panel::before,
-.hero__text-panel.panel::after {
-  background: none;
-  opacity: 0;
+.hero__text {
+  max-width: 780px;
+  margin-left: clamp(1.5rem, 9vw, 6.5rem);
 }
 
 .hero__eyebrow {
-  font-family: var(--hero-body-font);
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-  color: var(--maroon);
-  font-size: 0.74rem;
-  margin: 0 0 0.9rem;
-  font-weight: 600;
+  font-family: var(--hero-script-font);
+  letter-spacing: 0.02em;
+  color: #000;
+  font-size: clamp(1.4rem, 2.2vw, 1.8rem);
+  margin: 0 0 0.4rem;
+  font-weight: 400;
+  opacity: 0;
+  animation: hero-fade-up 0.7s ease 0.1s forwards;
 }
 
 .hero__title {
   font-family: var(--hero-title-font);
-  font-size: clamp(3rem, 5.2vw, 3.0rem);
-  color: var(--maroon-deep);
+  font-size: clamp(2.6rem, 4.6vw, 4.4rem);
+  color: #000;
   margin: 0;
-  line-height: 0.95;
+  line-height: 1.15;
   letter-spacing: 0.01em;
-  font-weight: 700;
+  font-weight: 400;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.3);
 }
 
-.hero__title span {
-  color: var(--gold);
+.hero__title-amp {
+  color: #ecc888;
+}
+
+.hero__char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(3px);
+  animation: hero-char-in 0.12s ease-out forwards;
+}
+
+.hero__caret {
+  display: inline-block;
+  width: 3px;
+  height: 0.85em;
+  margin-left: 2px;
+  vertical-align: -0.1em;
+  background: #ecc888;
+  opacity: 0;
+  animation: hero-caret-blink 0.9s steps(1, start) forwards;
+}
+
+@keyframes hero-char-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-caret-blink {
+  0%,
+  16.6%,
+  33.3%,
+  50%,
+  66.6% {
+    opacity: 1;
+  }
+  8.3%,
+  25%,
+  41.6%,
+  58.3%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes hero-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__eyebrow,
+  .hero__meta,
+  .hero__char {
+    animation: none !important;
+    opacity: 1 !important;
+    filter: none !important;
+    transform: none !important;
+  }
+
+  .hero__caret {
+    display: none !important;
+  }
 }
 
 .hero__copy {
   max-width: 640px;
-  font-size: 1.03rem;
-  color: var(--paper-ink);
-  margin: 0;
-  line-height: 1.75;
-  font-family: var(--hero-body-font);
+  font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+  color: #000;
+  margin: 0.6rem 0 0;
+  line-height: 1.5;
+  font-family: var(--hero-script-font);
   font-weight: 400;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
 }
 
 .hero__meta {
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
-  padding: 1rem 1.15rem;
-  border: 1px solid rgba(94,66,34,0.12);
-  border-radius: 1rem;
-  background: rgba(255,250,242,0.44);
-  width: fit-content;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  gap: 0.2rem;
   margin-top: 1.2rem;
+  width: fit-content;
+  opacity: 0;
+  animation: hero-fade-up 0.7s ease 4.3s forwards;
+}
+
+.hero__meta strong,
+.hero__meta span {
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+  font-family: var(--hero-script-font);
 }
 
 .hero__meta strong {
-  font-family: var(--hero-body-font);
-  letter-spacing: 0.18em;
-  color: var(--green);
-  text-transform: uppercase;
-  font-size: 0.82rem;
-  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #ecc888;
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+  font-weight: 400;
+}
+
+.hero__meta span {
+  color: #000;
+  font-size: clamp(1.3rem, 2vw, 1.7rem);
 }
 
 .hero__image {
@@ -510,10 +564,9 @@ button, input, textarea, select { font: inherit; }
     gap: 1.25rem;
   }
 
-  .hero__text-panel {
+  .hero__text {
     max-width: none;
-    padding: 1.4rem;
-    opacity: 0.5 !important;
+    margin-left: 0;
   }
 
   .hero__image {
@@ -583,16 +636,15 @@ button, input, textarea, select { font: inherit; }
   }
 
   .hero__title {
-    font-size: clamp(2.3rem, 9vw, 3.1rem);
+    font-size: clamp(1.9rem, 8.5vw, 2.7rem);
   }
 
   .hero__copy {
-    font-size: 1rem;
+    font-size: clamp(1.5rem, 5.5vw, 1.9rem);
   }
 
   .hero__meta {
     width: 100%;
-    padding: 1rem 1.1rem;
   }
 
   .hero__image {

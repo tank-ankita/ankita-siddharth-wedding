@@ -17,7 +17,7 @@ const celebrationEvents = [
     time: "7:00 PM onwards",
     venue: "Eskay Resorts",
     description:
-      "An evening of music, dance, performances, and Bollywood celebrations.",
+      "An evening of songs, choreographed dancing and surprise performances, before the floor opens up for all of us.",
     celebrationImage: sangeetImage,
     venueImage: eskayVenueImage,
     imageAlt: "Traditional Indian dancers celebrating the Sangeet",
@@ -26,12 +26,12 @@ const celebrationEvents = [
   {
     id: 2,
     eyebrow: "Wedding Ceremony",
-    title: "Together, Under the Mandap",
+    title: "The Flame & Pheras",
     date: "Friday, 29th January",
     time: "4:00 PM onwards",
-    venue: "Sahara Star, Mumbai",
+    venue: "Sahara Star",
     description:
-      "Join us as two families come together and Ankita and Siddharth begin their forever.",
+      "Rituals and vows taken by the couple around a sacred fire, sealing a lifetime together.",
     celebrationImage: weddingImage,
     venueImage: saharaVenueImage,
     imageAlt: "Indian wedding mandap illustration",
@@ -45,7 +45,7 @@ const celebrationEvents = [
     time: "7:30 PM onwards",
     venue: "Eskay Resorts",
     description:
-      "Dinner, laughter, and one\nfinal evening of celebration\nwith our favorite people.",
+      "A relaxed evening of dinner and celebration, meeting the newlyweds as husband and wife for the first time.",
     celebrationImage: receptionImage,
     venueImage: receptionVenueImage,
     imageAlt: "Two champagne glasses celebrating the reception",
