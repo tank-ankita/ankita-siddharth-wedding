@@ -150,10 +150,9 @@
   flex-direction: column;
   max-height: 1000px;
   overflow: hidden;
-  border: 1px solid var(--wedding-border);
   border-radius: 220px 220px 24px 24px;
   background: #b7673229;
-  box-shadow: 0 28px 60px rgba(76, 43, 24, 0.12);
+  box-shadow: 0 28px 60px #4b494666;
   backdrop-filter: blur(3px);
   transition:
     transform 300ms ease,
