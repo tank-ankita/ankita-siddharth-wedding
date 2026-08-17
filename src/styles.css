@@ -33,7 +33,7 @@ body {
   min-height: 100vh;
   background:
     linear-gradient(135deg, rgba(93, 42, 23, 0.92) 0%, rgba(159, 94, 49, 0.86) 38%, rgba(214, 168, 101, 0.9) 100%),
-    url('/assets/background/antique-paper-texture-with-torn-edges-perfect-for-vintage-design-aged-backgrounds-and-historical-documents-photo.jpeg') center/cover no-repeat;
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220' viewBox='0 0 220 220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E") repeat;
   background-blend-mode: multiply, normal;
   color: var(--ink);
 }
@@ -50,9 +50,9 @@ button, input, textarea, select { font: inherit; }
     linear-gradient(120deg, rgba(255, 243, 221, 0.24) 0%, transparent 40%, rgba(66, 33, 18, 0.14) 100%),
     linear-gradient(90deg, rgba(95, 60, 34, 0.05) 1px, transparent 1px),
     linear-gradient(rgba(95, 60, 34, 0.03) 1px, transparent 1px),
-    url('/assets/background/background-inspo.jpeg') center/cover no-repeat,
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220' viewBox='0 0 220 220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
     linear-gradient(135deg, #b98757 0%, #e8cfaa 48%, #8b552e 100%);
-  background-size: auto, 28px 28px, 28px 28px, cover, auto;
+  background-size: auto, 28px 28px, 28px 28px, 220px 220px, auto;
   background-blend-mode: screen, normal, normal, multiply, normal;
   color: var(--ink);
 }
@@ -142,8 +142,8 @@ button, input, textarea, select { font: inherit; }
    
     radial-gradient(circle at 20% 20%, rgba(94,69,40,0.08), transparent 26%),
     radial-gradient(circle at 80% 80%, rgba(94,69,40,0.08), transparent 24%),
-    url('/assets/background/antique-paper-texture-with-torn-edges-perfect-for-vintage-design-aged-backgrounds-and-historical-documents-photo.jpeg');
-  background-size: cover;
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220' viewBox='0 0 220 220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: cover, cover, 220px 220px;
   background-position: center;
 }
 
@@ -817,7 +817,7 @@ button, input, textarea, select { font: inherit; }
   position: absolute;
   width: 88px;
   height: 88px;
-  background: url('/assets/flower.svg') center/contain no-repeat;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cg fill='none' stroke='%239d632a' stroke-width='2.5'%3E%3Ccircle cx='50' cy='50' r='9'/%3E%3Cellipse cx='50' cy='23' rx='11' ry='21'/%3E%3Cellipse cx='50' cy='77' rx='11' ry='21'/%3E%3Cellipse cx='23' cy='50' rx='21' ry='11'/%3E%3Cellipse cx='77' cy='50' rx='21' ry='11'/%3E%3C/g%3E%3C/svg%3E") center/contain no-repeat;
   opacity: 0.6;
   animation: sway 5s ease-in-out infinite;
 }
