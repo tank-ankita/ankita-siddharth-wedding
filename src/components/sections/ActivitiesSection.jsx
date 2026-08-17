@@ -1,64 +1,40 @@
-import placeholderImage from "../../../assets/celebrations/dancing_doll.png";
 import "../../../css/Activities.css";
 
-const activities = [
+// TODO: replace with the Google Doc link for each list
+const THINGS_TO_DO_DOC_LINK = "#";
+const PLACES_TO_VISIT_DOC_LINK = "#";
+const FOOD_SPOTS_DOC_LINK = "#";
+
+const activityCategories = [
   {
-    title: "Heritage Walk",
+    title: "Things To Do",
     description:
-      "Step back in time with a walk through South Mumbai’s iconic landmarks.",
-    image: placeholderImage,
-    alt: "Gateway of India illustration",
+      "We couldn't invite you all the way to Mumbai and not share our favourite spots! This city is loud, colourful, delicious, and absolutely unforgettable — much like the wedding itself. Here are a few things we'd love for you to experience while you're here.",
+    linkHref: THINGS_TO_DO_DOC_LINK,
   },
   {
-    title: "Marine Drive",
+    title: "Places To Visit",
     description:
-      "Enjoy a sunset stroll along the Queen’s Necklace and soak in the sea breeze.",
-    image: placeholderImage,
-    alt: "Marine Drive illustration",
+      "Mumbai is a city of contrasts — colonial architecture sits alongside modern skyscrapers, peaceful waterfronts blend into bustling markets, and every neighbourhood tells a different story. These are the spots we think every first-time visitor should have on their list.",
+    linkHref: PLACES_TO_VISIT_DOC_LINK,
   },
   {
-    title: "Elephanta Island",
+    title: "Food Spot Recommendations",
     description:
-      "Take a ferry ride to explore the ancient caves and beautiful island views.",
-    image: placeholderImage,
-    alt: "Elephanta Caves illustration",
-  },
-  {
-    title: "Food Trail",
-    description:
-      "Indulge in Mumbai’s street food—from vada pav to pav bhaji and more.",
-    image: placeholderImage,
-    alt: "Mumbai street food illustration",
-  },
-  {
-    title: "Shopping Spree",
-    description:
-      "Explore local markets for handicrafts, fashion, jewelry, and souvenirs.",
-    image: placeholderImage,
-    alt: "Indian shopping bags illustration",
-  },
-  {
-    title: "Luxury Staycations",
-    description:
-      "Relax at world-class hotels with spa days, fine dining, and infinity-pool views.",
-    image: placeholderImage,
-    alt: "Luxury Mumbai hotel illustration",
-  },
-  {
-    title: "Bollywood Experience",
-    description:
-      "Live the Mumbai magic with a studio tour or a Bollywood dance class.",
-    image: placeholderImage,
-    alt: "Bollywood dancing illustration",
-  },
-  {
-    title: "Rooftop Nights",
-    description:
-      "Unwind at Mumbai’s beautiful rooftop bars with spectacular city views.",
-    image: placeholderImage,
-    alt: "Mumbai rooftop evening illustration",
+      "Forget the wedding catering — just kidding, don't — but Mumbai's food scene deserves its own celebration. These are the spots we personally swear by, and we'd be offended if you left the city without trying at least a few.",
+    linkHref: FOOD_SPOTS_DOC_LINK,
   },
 ];
+
+function OrnamentalDivider() {
+  return (
+    <div className="activity-card__divider" aria-hidden="true">
+      <span />
+      <b>✦</b>
+      <span />
+    </div>
+  );
+}
 
 export default function MumbaiActivities() {
   return (
@@ -66,12 +42,16 @@ export default function MumbaiActivities() {
       <div className="activities-floral floral-top-left" aria-hidden="true" />
       <div className="activities-floral floral-bottom-right" aria-hidden="true" />
 
+      <div className="activities-landmark landmark-left" aria-hidden="true">
+      </div>
 
+      <div className="activities-landmark landmark-right" aria-hidden="true">
+      </div>
 
       <div className="activities-panel">
         <header className="activities-heading">
-          <p className="activities-eyebrow">Explore Mumbai</p>
-          <h2>Things To Do</h2>
+          <p className="activities-eyebrow">Mumbai Guide</p>
+          <h2>Explore Mumbai</h2>
 
           <div className="heading-divider" aria-hidden="true">
             <span />
@@ -80,52 +60,42 @@ export default function MumbaiActivities() {
           </div>
 
           <p className="activities-intro">
-            Make the most of your time in this vibrant city!
-            <br />
-            Here are some handpicked experiences to enjoy around the wedding.
+            Make the most of your time in this vibrant city — here's where to
+            go, what to see, and what to eat while you're here.
           </p>
         </header>
 
         <div className="activities-grid">
-          {activities.map((activity) => (
-            <article className="activity-card" key={activity.title}>
-              <div className="activity-card-top">
-                <span className="activity-motif" aria-hidden="true">
+          {activityCategories.map((category) => (
+            <article className="activity-card" key={category.title}>
+              <div className="activity-card__arch-wrap">
+                <div className="activity-card__arch" aria-hidden="true" />
+                <span className="activity-card__motif" aria-hidden="true">
                   ❧
                 </span>
-
-                <div className="activity-image-wrap">
-                  <img
-                    className="activity-image"
-                    src={activity.image}
-                    alt={activity.alt}
-                    loading="lazy"
-                  />
-                </div>
               </div>
 
-              <div className="activity-copy">
-                <h3>{activity.title}</h3>
-                <p>{activity.description}</p>
+              <div className="activity-card__content">
+                <h3 className="activity-card__title">{category.title}</h3>
+
+                <OrnamentalDivider />
+
+                <p className="activity-card__description">
+                  {category.description}
+                </p>
+
+                <a
+                  className="activity-card__link"
+                  href={category.linkHref}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  View the full list
+                  <span aria-hidden="true">→</span>
+                </a>
               </div>
             </article>
           ))}
-        </div>
-
-        <div className="activities-help">
-          <span className="help-heart" aria-hidden="true">
-            ♥
-          </span>
-
-          <p>
-            <strong>Need help planning or have questions about any of these?</strong>
-            <br />
-            We’re here to help! Reach out to us anytime.
-          </p>
-
-          <span className="help-ornament" aria-hidden="true">
-            ❧
-          </span>
         </div>
       </div>
     </section>

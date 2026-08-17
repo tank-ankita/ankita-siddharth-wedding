@@ -352,15 +352,6 @@ export default function FAQSection() {
             A few helpful details to make your journey and celebration with us
             as effortless as possible.
           </p>
-
-          <div className="faq-section__contact">
-            <p>Still have a question?</p>
-
-            <a href="mailto:ankita.siddharth.wedding@example.com">
-              Send us a note
-              <span aria-hidden="true">→</span>
-            </a>
-          </div>
         </header>
 
         <div className="faq-section__groups">
