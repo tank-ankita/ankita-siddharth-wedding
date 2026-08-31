@@ -19,7 +19,9 @@ const initialForm = {
   dietaryNotes: "",
 };
 
-const RSVP_ENDPOINT = import.meta.env.VITE_RSVP_ENDPOINT;
+const RSVP_ENDPOINT =
+  import.meta.env.VITE_RSVP_ENDPOINT ||
+  "https://script.google.com/macros/s/AKfycby5657Tw9ZKo_HxIMTyM-tW4SVAQYRydLcTKrl30MSoGZbThFHd2qpXT32qOtwhFAI7_w/exec";
 
 export default function RSVPSection() {
   const [formData, setFormData] = useState(initialForm);
