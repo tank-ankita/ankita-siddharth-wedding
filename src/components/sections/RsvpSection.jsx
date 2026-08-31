@@ -19,9 +19,13 @@ const initialForm = {
   dietaryNotes: "",
 };
 
+const RSVP_ENDPOINT = import.meta.env.VITE_RSVP_ENDPOINT;
+
 export default function RSVPSection() {
   const [formData, setFormData] = useState(initialForm);
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState(false);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -43,16 +47,36 @@ export default function RSVPSection() {
     }));
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
-    /*
-      Replace this with your API, Firebase, Supabase,
-      Formspree or Google Apps Script request.
-    */
+    if (!RSVP_ENDPOINT) {
+      console.warn(
+        "VITE_RSVP_ENDPOINT is not set — RSVP was not sent anywhere. See google-apps-script/rsvp-endpoint.gs for setup."
+      );
+      console.log("RSVP submission:", formData);
+      setSubmitted(true);
+      return;
+    }
 
-    console.log("RSVP submission:", formData);
-    setSubmitted(true);
+    setSubmitting(true);
+    setSubmitError(false);
+
+    try {
+      // Apps Script web apps don't return CORS headers, so the response
+      // is opaque; a resolved fetch just means the request went out.
+      await fetch(RSVP_ENDPOINT, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify(formData),
+      });
+      setSubmitted(true);
+    } catch (error) {
+      setSubmitError(true);
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -324,10 +348,16 @@ export default function RSVPSection() {
                 </>
               )}
 
-              <button className="rsvp-form__submit" type="submit">
-                Send My RSVP
+              <button className="rsvp-form__submit" type="submit" disabled={submitting}>
+                {submitting ? "Sending…" : "Send My RSVP"}
                 <span aria-hidden="true">→</span>
               </button>
+
+              {submitError && (
+                <p className="rsvp-form__error" role="alert">
+                  Something went wrong sending your RSVP. Please try again in a moment.
+                </p>
+              )}
 
               <p className="rsvp-form__privacy">
                 Your details will only be used for wedding planning.

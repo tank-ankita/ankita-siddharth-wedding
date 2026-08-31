@@ -384,6 +384,19 @@
   font-size: 1.2rem;
 }
 
+.rsvp-form__submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.rsvp-form__error {
+  margin: 15px 0 0;
+  color: var(--rsvp-red);
+  text-align: center;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 0.92rem;
+}
+
 .rsvp-form__privacy {
   margin: 15px 0 0;
   color: var(--rsvp-muted);
