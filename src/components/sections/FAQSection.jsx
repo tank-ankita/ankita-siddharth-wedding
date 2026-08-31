@@ -28,9 +28,6 @@ export const faqCategories = [
           {
             p: `A list of important contacts is available [here](${CONTACTS_DRIVE_LINK}).`,
           },
-          {
-            p: "You can also reach out any time at [ankita.siddharth.wedding@example.com](mailto:ankita.siddharth.wedding@example.com) — we are happy to help with travel, accommodation, outfits, or anything in between.",
-          },
         ],
       },
       {
@@ -109,6 +106,9 @@ export const faqCategories = [
           {
             p: "With the incredible variety and value available, we'd recommend purchasing your outfits rather than hassling with rentals. You'll end up with a stunning piece you can treasure and rewear long after the wedding. There's a wide range of stores nearby that cater to wedding outfits.",
           },
+          {
+            p: "For inspiration, please checkout some Indian wedding outfits for guests men/women on Pinterest.",
+          },
         ],
       },
       {
@@ -144,6 +144,14 @@ export const faqCategories = [
         answer: [
           {
             p: "We're happy to accommodate dietary restrictions and allergies. Please let us know in advance via the RSVP so we can coordinate with our caterers. Whether it's Gluten-Free, Nut-Free, Dairy-Free, Jain, or any other requirement, we want to make sure you enjoy every meal worry-free.",
+          },
+        ],
+      },
+      {
+        question: "Is it safe to drink the tap water?",
+        answer: [
+          {
+            p: "No — we strongly recommend drinking only bottled or filtered water during your stay. Bottled water will be readily available at the hotels and at all wedding venues. As a general rule, also avoid ice from street vendors or local restaurants, though all ice and water served at our wedding events will be completely safe.",
           },
         ],
       },
@@ -217,14 +225,6 @@ export const faqCategories = [
           },
           {
             p: "However, for reliable connectivity on the go — navigation, Uber, WhatsApp, and all the Instagram Stories you'll be posting — we'd recommend getting an eSIM before you travel. Providers like Airalo or Holafly offer affordable India eSIM plans that activate instantly, with no physical SIM swap needed. Just make sure your phone supports eSIM, and you'll be connected the moment you land.",
-          },
-        ],
-      },
-      {
-        question: "Is it safe to drink the tap water?",
-        answer: [
-          {
-            p: "No — we strongly recommend drinking only bottled or filtered water during your stay. Bottled water will be readily available at the hotels and at all wedding venues. As a general rule, also avoid ice from street vendors or local restaurants, though all ice and water served at our wedding events will be completely safe.",
           },
         ],
       },

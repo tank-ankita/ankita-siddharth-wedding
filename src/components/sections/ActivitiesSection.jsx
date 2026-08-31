@@ -1,9 +1,11 @@
 import "../../../css/Activities.css";
 
-// TODO: replace with the Google Doc link for each list
-const THINGS_TO_DO_DOC_LINK = "#";
-const PLACES_TO_VISIT_DOC_LINK = "#";
-const FOOD_SPOTS_DOC_LINK = "#";
+const THINGS_TO_DO_DOC_LINK =
+  "https://docs.google.com/document/d/1rTOBU3Lu18B8uULKDzaMH8KCms3GkT9TUGyQCwWLOLI/edit?tab=t.0";
+const PLACES_TO_VISIT_DOC_LINK =
+  "https://docs.google.com/document/d/1rTOBU3Lu18B8uULKDzaMH8KCms3GkT9TUGyQCwWLOLI/edit?tab=t.bodpcyxsfaxe";
+const FOOD_SPOTS_DOC_LINK =
+  "https://docs.google.com/document/d/1rTOBU3Lu18B8uULKDzaMH8KCms3GkT9TUGyQCwWLOLI/edit?tab=t.r2eot48uqjes";
 
 const activityCategories = [
   {
