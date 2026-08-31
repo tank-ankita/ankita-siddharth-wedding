@@ -1,8 +1,8 @@
 import { useState } from "react";
 import "../../../css/FAQSection.css";
 
-// TODO: replace with the Google Drive link to the important-contacts PDF
-const CONTACTS_DRIVE_LINK = "#";
+const CONTACTS_DRIVE_LINK =
+  "https://docs.google.com/document/d/1rTOBU3Lu18B8uULKDzaMH8KCms3GkT9TUGyQCwWLOLI/edit?tab=t.pdr3ce9p1oy6";
 
 export const faqCategories = [
   {
