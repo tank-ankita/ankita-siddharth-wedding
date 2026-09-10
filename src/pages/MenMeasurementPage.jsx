@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import measurementGuide from '../../assets/measurements/men.png';
 import './WomenMeasurementPage.css';
 
@@ -10,9 +10,15 @@ const measurements = [
   'Inseam Length', 'Outseam Length',
 ];
 
+const MEN_ENDPOINT = 'https://script.google.com/macros/s/AKfycbw0S0U0BDZ5dH9c6GKFJYWziVHmoFLxrmTrGzhu93sSFDkf2clkpM-C5KhW0dX1dUhYSA/exec';
+const MEN_SUBMISSIONS_ENABLED = true;
+
 export default function MenMeasurementPage() {
   const [name, setName] = useState('');
   const [values, setValues] = useState({});
+  const [status, setStatus] = useState('idle');
+  const request = useRef(null);
+  const sending = useRef(false);
   const completed = measurements.filter((_, index) => Number(values[index]) > 0).length;
 
   useEffect(() => {
@@ -20,6 +26,38 @@ export default function MenMeasurementPage() {
     document.title = 'Men’s Measurements | Ankita & Siddharth';
     return () => { document.title = previousTitle; };
   }, []);
+
+
+  async function submitMeasurements(event) {
+    event.preventDefault();
+    if (sending.current || status === 'success') return;
+    const payload = { form: 'men', name: name.trim(), measurements: measurements.map((_, index) => Number(values[index])) };
+    if (!payload.name || payload.name.length > 200 || payload.measurements.some(value => !Number.isFinite(value) || value < 0.01)) return;
+    const fingerprint = JSON.stringify(payload);
+    if (request.current?.fingerprint !== fingerprint) {
+      request.current = { fingerprint, submissionId: crypto.randomUUID() };
+    }
+    sending.current = true;
+    setStatus('sending');
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 30000);
+    try {
+      const response = await fetch(MEN_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify({ ...payload, submissionId: request.current.submissionId }),
+        signal: controller.signal,
+      });
+      const result = await response.json();
+      if (!response.ok || result.status !== 'success' || result.form !== 'men' || result.submissionId !== request.current.submissionId) throw new Error('Save not confirmed');
+      setStatus('success');
+    } catch {
+      setStatus('error');
+    } finally {
+      clearTimeout(timeout);
+      sending.current = false;
+    }
+  }
 
 
   return (
@@ -48,11 +86,11 @@ export default function MenMeasurementPage() {
               <h2 id="measurement-form-title">Your outfit, your fit</h2>
               <p>Use a flexible measuring tape, keep it snug without pulling tight, and stand in a relaxed posture.</p>
             </div>
-            <form onSubmit={(event) => event.preventDefault()}>
+            <form onSubmit={submitMeasurements} aria-busy={status === 'sending'}>
               <div className="measurement-field measurement-name">
                 <label htmlFor="measurement-name">Name (required)</label>
                 <div className="measurement-input-wrap">
-                  <input id="measurement-name" name="name" type="text" autoComplete="name" required pattern=".*\S.*" title="Please enter your name." value={name} placeholder="Your name" onChange={(event) => {
+                  <input id="measurement-name" name="name" type="text" autoComplete="name" required maxLength={200} disabled={status === 'sending' || status === 'success'} pattern=".*\S.*" title="Please enter your name." value={name} placeholder="Your name" onChange={(event) => {
                     setName(event.target.value);
                   }} />
                 </div>
@@ -66,7 +104,7 @@ export default function MenMeasurementPage() {
                   <div className="measurement-field" key={label}>
                     <label htmlFor={`measurement-${index}`}><span className="measurement-number" aria-hidden="true">{index + 1}</span>{label}</label>
                     <div className="measurement-input-wrap">
-                      <input id={`measurement-${index}`} name={label} type="number" inputMode="decimal" min="0.01" step="any" required value={values[index] ?? ''} placeholder="0.0" aria-describedby="measurement-unit" onChange={(event) => {
+                      <input id={`measurement-${index}`} name={label} type="number" inputMode="decimal" min="0.01" step="any" required disabled={status === 'sending' || status === 'success'} value={values[index] ?? ''} placeholder="0.0" aria-describedby="measurement-unit" onChange={(event) => {
                         setValues({ ...values, [index]: event.target.value });
                           }} />
                       <span aria-hidden="true">cm</span>
@@ -75,8 +113,8 @@ export default function MenMeasurementPage() {
                 ))}
               </div>
               <p id="measurement-unit" className="measurement-note">All values are in centimeters. Double-check your measurements against the guide before submitting.</p>
-              <button className="measurement-submit" type="submit" disabled aria-describedby="measurement-submission-note">Submit measurements</button>
-              <p id="measurement-submission-note" className="measurement-note">Submissions will open soon. Your measurements have not been submitted.</p>
+              <button className="measurement-submit" type="submit" disabled={!MEN_SUBMISSIONS_ENABLED || status === 'sending' || status === 'success'} aria-describedby="measurement-submission-note">{status === 'sending' ? 'Submitting…' : status === 'success' ? 'Measurements submitted' : status === 'error' ? 'Retry submission' : 'Submit measurements'}</button>
+              <p id="measurement-submission-note" className="measurement-note" role="status">{!MEN_SUBMISSIONS_ENABLED ? 'Submissions will open soon. Your measurements have not been submitted.' : status === 'success' ? 'Thank you! Your measurements have been saved.' : status === 'error' ? 'We couldn’t confirm that your measurements were saved. Your entries are still here. Please retry; an unchanged submission will not be saved twice.' : 'Your name and measurements will be sent to the wedding organizers.'}</p>
               <div className="measurement-inspiration">
                 <h3>Share your outfit inspiration</h3>
                 <p>Create a folder with your name in the shared Drive folder, then upload any inspiration pictures of wedding outfits or designs you have in mind.</p>
