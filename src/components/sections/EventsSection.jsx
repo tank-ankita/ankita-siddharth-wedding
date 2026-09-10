@@ -28,7 +28,7 @@ const celebrationEvents = [
     eyebrow: "Wedding Ceremony",
     title: "The Flame & Pheras",
     date: "Friday, 29th January",
-    time: "4:00 PM onwards",
+    time: "10:00 AM onwards",
     venue: "Sahara Star",
     description:
       "Rituals and vows taken by the couple around a sacred fire, sealing a lifetime together.",
