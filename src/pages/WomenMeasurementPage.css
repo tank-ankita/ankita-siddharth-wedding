@@ -1,0 +1,50 @@
+.measurement-page { min-height: 100vh; padding: 28px 0 64px; }
+.measurement-container { width: min(1240px, calc(100% - 40px)); margin: 0 auto; }
+.measurement-back { color: var(--maroon); font-size: 1.05rem; text-underline-offset: 4px; }
+.measurement-header { text-align: center; margin: 40px auto; }
+.measurement-header .section-eyebrow { margin-bottom: 12px; }
+.measurement-header h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2.2rem, 5vw, 3.8rem); font-weight: 500; color: var(--maroon); line-height: 1.15; margin: 0 0 18px; }
+.measurement-header > p:last-child { font-size: 1.2rem; color: var(--paper-ink); }
+.measurement-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); align-items: start; gap: 32px; }
+.measurement-layout > *, .measurement-field, .measurement-input-wrap { min-width: 0; }
+.measurement-page :is(h1, h2, p, label, figcaption, button) { overflow-wrap: anywhere; }
+.measurement-reference { position: sticky; top: 24px; }
+.measurement-reference figure { margin: 0; }
+.measurement-reference img { width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--line); box-shadow: 0 12px 32px #49291918; }
+.measurement-reference figcaption { font-size: 1rem; margin-top: 12px; color: var(--paper-ink); }
+.measurement-reference figcaption a { display: inline-block; color: var(--maroon); text-underline-offset: 3px; }
+.measurement-card { padding: 32px; border: 1px solid #9d632a40; border-radius: 16px; background: #fff8e9e8; box-shadow: 0 14px 40px #49291912; }
+.measurement-card-heading { border-bottom: 1px solid var(--line); padding-bottom: 16px; margin-bottom: 20px; }
+.measurement-card-heading .section-eyebrow { margin: 0 0 8px; }
+.measurement-card h2 { color: var(--maroon); font-family: 'Playfair Display', Georgia, serif; font-weight: 500; font-size: 1.9rem; margin: 0 0 12px; }
+.measurement-card-heading > p:last-child { color: var(--paper-ink); font-size: 1.1rem; margin: 0; }
+.measurement-form-meta { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: .95rem; color: var(--paper-ink); margin-bottom: 20px; }
+.measurement-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 20px; }
+.measurement-field label { display: flex; align-items: center; gap: 8px; font-size: 1rem; font-weight: 600; margin-bottom: 8px; }
+.measurement-number { display: inline-grid; place-items: center; background: var(--maroon); color: #fff8e9; width: 24px; height: 24px; flex-shrink: 0; border-radius: 50%; font-size: .9rem; }
+.measurement-input-wrap { position: relative; }
+.measurement-name { margin-bottom: 24px; }
+.measurement-input-wrap input { width: 100%; min-height: 48px; padding: 10px 48px 10px 12px; border: 1px solid #9d632a66; border-radius: 6px; color: var(--ink); background: #fffdf7; font-size: 1.1rem; }
+.measurement-input-wrap > span { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); color: var(--paper-ink); pointer-events: none; }
+.measurement-input-wrap input::placeholder { color: #8b7b6a; }
+.measurement-page :is(input, button, a):focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+.measurement-submit { width: 100%; padding: 15px; border: 1px solid var(--maroon); border-radius: 6px; background: var(--maroon); color: #fff8e9; cursor: pointer; font-size: 1.1rem; }
+.measurement-submit:hover:not(:disabled) { background: var(--maroon-deep); }
+.measurement-note { font-size: 1rem; color: var(--paper-ink); margin: 20px 0; }
+.measurement-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+.measurement-inspiration { margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--line); }
+.measurement-inspiration h3 { margin: 0 0 8px; color: var(--maroon); font-size: 1.3rem; }
+.measurement-inspiration p { margin: 0 0 8px; color: var(--paper-ink); font-size: 1.05rem; }
+.measurement-inspiration a { display: inline-flex; align-items: center; min-height: 44px; color: var(--maroon); font-weight: 600; text-underline-offset: 4px; overflow-wrap: anywhere; }
+@media (max-width: 900px) {
+  .measurement-layout { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .measurement-reference { position: static; width: 100%; max-width: 560px; margin: 0 auto; }
+}
+@media (max-width: 600px) {
+  .measurement-container { width: calc(100% - 28px); }
+  .measurement-header { margin: 30px auto; }
+  .measurement-card { padding: 22px 18px; }
+  .measurement-fields { grid-template-columns: 1fr; gap: 18px; }
+  .measurement-form-meta { flex-wrap: wrap; }
+  .measurement-back, .measurement-reference figcaption a { display: inline-flex; align-items: center; min-height: 44px; }
+}
