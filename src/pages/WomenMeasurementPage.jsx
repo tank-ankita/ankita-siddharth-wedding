@@ -3,14 +3,15 @@ import measurementGuide from '../../assets/measurements/women.png';
 import './WomenMeasurementPage.css';
 
 const measurements = [
-  'Neck Width', 'Back Neck Depth', 'Neck & Shoulder', 'Sleeve Length',
+  'Shoulder to Shoulder Width', 'Back Neck Depth', 'Neck', 'Sleeve Length',
   'Sleeve Circumference', 'Blouse Length', 'Waist / Midriff', 'Front Neck Depth',
   'Shoulders', 'Chest / Bust', 'Shoulder to Apex', 'Armhole',
 ];
-const WOMEN_ENDPOINT = 'https://script.google.com/macros/s/AKfycbzJXH5Th2G67DCxiahHZn1AVYEBKTZAUHOSXhowv08os37VdFYD2464gB1IW6jqOHN-/exec';
+const WOMEN_ENDPOINT = 'https://script.google.com/macros/s/AKfycbz5JNRXR3ifGbnaw3ZnQ6860FqRH-NvRAnbmEja_LFlyqAxmjobLchaAmLzNfSiwwJQ/exec';
 
 export default function WomenMeasurementPage() {
   const [name, setName] = useState('');
+  const [inspiration, setInspiration] = useState('');
   const [values, setValues] = useState({});
   const [status, setStatus] = useState('idle');
   const request = useRef(null);
@@ -27,7 +28,7 @@ export default function WomenMeasurementPage() {
   async function submitMeasurements(event) {
     event.preventDefault();
     if (sending.current || status === 'success') return;
-    const payload = { form: 'women', name: name.trim(), measurements: measurements.map((_, index) => Number(values[index])) };
+    const payload = { form: 'women', name: name.trim(), inspiration: inspiration.trim(), measurements: measurements.map((_, index) => Number(values[index])) };
     if (!payload.name || payload.name.length > 200 || payload.measurements.some(value => !Number.isFinite(value) || value < 0.01)) return;
     const fingerprint = JSON.stringify(payload);
     if (request.current?.fingerprint !== fingerprint) {
@@ -38,6 +39,14 @@ export default function WomenMeasurementPage() {
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), 30000);
     try {
+      if (payload.inspiration) {
+        const readiness = await fetch(WOMEN_ENDPOINT, { signal: controller.signal });
+        const capabilities = await readiness.json();
+        if (capabilities.form !== 'women' || capabilities.inspirationSupported !== true) {
+          setStatus('setup');
+          return;
+        }
+      }
       const response = await fetch(WOMEN_ENDPOINT, {
         method: 'POST',
         headers: { 'Content-Type': 'text/plain;charset=utf-8' },
@@ -107,9 +116,13 @@ export default function WomenMeasurementPage() {
                   </div>
                 ))}
               </div>
+              <div className="measurement-field measurement-notes">
+                <label htmlFor="measurement-inspiration">Outfit inspiration (optional)</label>
+                <textarea id="measurement-inspiration" name="inspiration" rows={4} maxLength={2000} value={inspiration} disabled={status === 'sending' || status === 'success'} placeholder="Tell us about colors, fabrics, styles, embroidery, or any other ideas you have in mind." onChange={(event) => setInspiration(event.target.value)} />
+              </div>
               <p id="measurement-unit" className="measurement-note">All values are in centimeters. Double-check your measurements against the guide before submitting.</p>
               <button className="measurement-submit" type="submit" disabled={status === 'sending' || status === 'success'} aria-describedby="measurement-submission-note">{status === 'sending' ? 'Submitting…' : status === 'success' ? 'Measurements submitted' : status === 'error' ? 'Retry submission' : 'Submit measurements'}</button>
-              <p id="measurement-submission-note" className="measurement-note" role="status">{status === 'success' ? 'Thank you! Your measurements have been saved.' : status === 'error' ? 'We couldn’t confirm that your measurements were saved. Your entries are still here. Please retry; an unchanged submission will not be saved twice.' : 'Your name and measurements will be sent to the wedding organizers.'}</p>
+              <p id="measurement-submission-note" className="measurement-note" role="status">{status === 'success' ? 'Thank you! Your measurements have been saved.' : status === 'setup' ? 'Saving inspiration notes is not available yet. Your entries are still here; please try again once the organizers update the form.' : status === 'error' ? 'We couldn’t confirm that your measurements were saved. Your entries are still here. Please retry; an unchanged submission will not be saved twice.' : 'Your name and measurements will be sent to the wedding organizers.'}</p>
               <div className="measurement-inspiration">
                 <h3>Share your outfit inspiration</h3>
                 <p>Create a folder with your name in the shared Drive folder, then upload any inspiration pictures of wedding outfits or designs you have in mind.</p>
